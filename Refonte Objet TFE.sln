@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{072383F1-1545-76F8-82EC-7A75F03771CD}") = "Refonte Objet TFE", "Assembly-CSharp.csproj", "{A2E2F3BE-4FE3-CCFD-68F4-A67D87432FF3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2E2F3BE-4FE3-CCFD-68F4-A67D87432FF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2E2F3BE-4FE3-CCFD-68F4-A67D87432FF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2E2F3BE-4FE3-CCFD-68F4-A67D87432FF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2E2F3BE-4FE3-CCFD-68F4-A67D87432FF3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal

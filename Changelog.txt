@@ -1,0 +1,165 @@
+﻿	**v0.3.1:**
+	
+			- Nouvel affichage Score
+			- Ajout du temps total passé dans le donjon (Stats).
+			- Ajout Bruitages supplémentaires.
+	
+=======================================================================================================================================================================		
+	
+	v0.3:
+	
+			- Possibilité de quitter le jeu dans le Start et dans le Menu.
+			- Correction bug Class faussée au GameOver.
+			- Diminution de la taille des colliders activant les affichages dans la tavern.
+			- Correction position Joueur qui causait des ralentissements dans son déplacement.
+			- Ajout Bruitage du Joueur (blessure et attaques).
+
+=======================================================================================================================================================================	
+
+	V0.2.8:
+	
+			- Lors de la mort, Ralentissements du temps et attente de 3 s avant passage au GameOver.
+			- Attaque et déplacement désactivé à la mort du joueur.
+			- Animation d'attaque du Zombie, du OneEye , du Skeleton et de l'Acidman.
+			- Ajout Loading Screen entre le menu et le jeu.
+			- Taverne, cimetière, salleInfo disponible.
+			- Choix Classe et difficulté dans le Menu et non plus dans le donjon (affichage animation difficulté dans le donjon quand même).
+			- Correction Bug Scoring "Hard" mode.
+			- Animation de Mort du joueur.
+			- Ajout du nbre d'ennemis tués.
+
+=======================================================================================================================================================================			
+	
+	V0.2.7:
+	
+			- Tentative de correction du Bug "Attaque"
+			- Tentacules CàC de Cthulhu peuvent être renvoyées à leurs positions initiales.
+			- Correction bug ralentissements du fantome non retiré.
+			
+=======================================================================================================================================================================
+	
+	V0.2.6:
+	
+			- Correction bug perte FPS
+			- Nouveaux Dessins Boss
+			- Animation Zombie.
+			- Nouveau systéme de Mort ennemi + animation
+
+=======================================================================================================================================================================
+			
+	V0.2.5:
+	
+			- Troisiéme Boss ajouté (phase de test).
+			- 4 éme salle de boss retiré.
+			- Ajout d'une difficulté "facile".
+			- "Conseils" ajoutés.
+			- Correction de bugs divers.
+
+=======================================================================================================================================================================
+			
+	V0.2: 
+	
+			- Second Boss ajouté.
+			- Refonte Graphique (Player et Terrain).
+			- Correction de bugs divers.
+			- Concepts d'attaques du troisiéme boss.
+			
+=======================================================================================================================================================================
+			
+	V0.1.9:
+	
+			- Equilibrage des classes:
+				- Mage : portée réduite, tir détruit aprés 2 "touchés".
+				- Archer : Légére déviation aléatoire, multiples fléches aprés 3 tirs.
+				- Guerrier : regen de vie par coup.
+			- Correction de bugs divers.
+			- concepts d'attaques du second boss.
+			
+=======================================================================================================================================================================
+			
+	V0.1.2:
+	
+			- Correction de bugs divers.
+			
+=======================================================================================================================================================================
+			
+	V0.1.1:
+	
+			- Correction de bugs divers.
+			
+=======================================================================================================================================================================
+			
+	V0.1:
+	
+			- Premier Boss ajouté.
+			- Correction de bugs divers.
+			
+=======================================================================================================================================================================
+			
+	V0.09:
+	
+			- Concepts d'attaques du premier boss.
+			
+=======================================================================================================================================================================
+
+	v0.08:
+	
+			- Systéme de vie du boss en fonction du temps passé dans les salles.
+			
+=======================================================================================================================================================================
+
+	V0.07:
+	
+			- Systéme de charge.
+			- Systéme d'attaque à distance multi-points.
+			
+=======================================================================================================================================================================
+
+	V0.06:
+	
+			- Déplacements aléatoires selon des points fixes.
+			- Déplacements de patrouilles selon des points fixes.
+			
+=======================================================================================================================================================================
+			
+	V0.05:
+	
+			- Systéme d'attaque à distance des IAs.
+			- Systéme de choix aléatoire des ennemis dans une salle.
+			- Ajout de divers "sprites".
+			
+=======================================================================================================================================================================
+			
+	V0.04: 
+	
+			- Ajout de "piéges".
+			- Systéme activant les ennemis à l'entrée du joueur dans la salle.
+			- "Mort " des boss.
+			
+=======================================================================================================================================================================
+			
+	V0.03:
+		
+			- Systéme d'attaque du Joueur.
+			- "Mort" des monstres.
+			- Systéme de munitions implémenté.
+			- Ajout de divers "sprites".
+			
+=======================================================================================================================================================================
+			
+	V0.02:
+		
+			- Interface utilisateur.
+			- Degats des monstres sur le joueur.
+			- Choix aléatoire de la map suivante.
+			- Ajout d'effet visuel.
+			
+=======================================================================================================================================================================
+
+	V0.01:
+	
+			- Déplacement du personnage principal.
+			- Poursuite du Joueur par l'IA.
+			- L'IA regarde toujours en direction du joueur.
+			
+=======================================================================================================================================================================
