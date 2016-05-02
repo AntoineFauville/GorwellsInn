@@ -139,7 +139,7 @@ public class Oeil : Boss {
 
 		if (this.gameObject.tag =="Dead")
 		{
-			LaserOn.Stop();
+			//LaserOn.Stop();
 			LaserOn.gameObject.SetActive(false);
 		}
 	}
