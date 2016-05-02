@@ -68,7 +68,13 @@ public class Oeil : Boss {
 			Projectiles ();
 			Laser ();	
 		}
-	}
+
+        if (this.gameObject.tag == "Dead")
+        {
+            //LaserOn.Stop();
+            LaserOn.gameObject.SetActive(false);
+        }
+    }
 
 	void Mouvement()
 	{

@@ -3,6 +3,7 @@
 			- Nouvel affichage Score
 			- Ajout du temps total passé dans le donjon (Stats).
 			- Ajout Bruitages supplémentaires.
+			- Ajout récupération vie en mode Easy.
 			- Correction Bug Mouvement Acidman.
 			- Correction bugs divers.
 	

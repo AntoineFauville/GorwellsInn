@@ -18,6 +18,7 @@ public class Boss : MonoBehaviour {
 	protected bool damageable = true;
 	protected bool hit = false;
 	protected bool dead = false;
+    private Personnage player;
 	/**/
 
 	public Boss()
@@ -29,6 +30,7 @@ public class Boss : MonoBehaviour {
 	{
 		life = GameObject.Find ("TriggerEasyLaunchGame").GetComponent<LaunchTimer> ();
 		bossLife = Mathf.Round (life.LifeBar.fillAmount * 20);
+        player = GameObject.Find("Player").GetComponent<Personnage>();
 	}
 
 	public virtual void Update () 
@@ -50,7 +52,12 @@ public class Boss : MonoBehaviour {
 			body [bodyPart].SetActive (false);
 			bodyPart++;
 		}
-	}
+
+        if (PlayerPrefs.GetString("Difficulty") == "Easy")
+        {
+            player.life.fillAmount = 1;
+        }
+    }
 
 	private void OnTriggerEnter(Collider contact)
 	{
