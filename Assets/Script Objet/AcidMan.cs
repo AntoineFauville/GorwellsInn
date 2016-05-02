@@ -7,6 +7,7 @@ public class AcidMan : IA {
 	private NavMeshAgent path;
 	private float dist;
 	private int randDes;
+    public bool firstTime;
 	//public Transform[] destinations;
 	private DataBase data;
 	private string room;
@@ -80,8 +81,9 @@ public class AcidMan : IA {
 		{
 			dist = Vector3.Distance (this.transform.position, data.salleAléa [randDes].transform.position);
 
-			if (dist < 2) 
+			if (dist < 2 || firstTime == false) 
 			{
+                firstTime = true;
 				randDes = Random.Range (0, data.salleAléa.Length);
 				path.destination = data.salleAléa [randDes].position;
 			}
