@@ -66,7 +66,7 @@ public class OneEye : IA {
 		{
 			float dist = Vector3.Distance(data.salle[i].transform.position, this.gameObject.transform.position);
 
-			if (dist < 2)
+			if (dist < 2 && path.enabled == true)
 			{
 				i++;
 				if (i < data.salle.Length)
@@ -75,7 +75,7 @@ public class OneEye : IA {
 				}
 			}
 
-			if (i == data.salle.Length)
+			if (i == data.salle.Length && path.enabled == true)
 			{
 				i = 0;
 				path.destination = data.salle[i].transform.position;

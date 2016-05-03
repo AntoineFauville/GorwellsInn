@@ -5,6 +5,7 @@
 			- Ajout Bruitages supplémentaires.
 			- Ajout récupération vie en mode Easy.
 			- Correction Bug Mouvement Acidman.
+			- Tentative de Correction d'un bug d'attaque et de non perte de vie.
 			- Correction bugs divers.
 	
 =======================================================================================================================================================================		

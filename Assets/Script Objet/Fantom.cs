@@ -57,7 +57,7 @@ public class Fantom : IA {
 		{
 			dist = Vector3.Distance (this.transform.position, data.salleAléa [randDes].position);
 
-			if (dist < 2) 
+			if (dist < 2 && path.enabled) 
 			{
 				randDes = Random.Range (0, data.salleAléa.Length);
 				path.destination = data.salleAléa [randDes].position;

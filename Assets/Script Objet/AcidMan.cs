@@ -81,7 +81,7 @@ public class AcidMan : IA {
 		{
 			dist = Vector3.Distance (this.transform.position, data.salleAléa [randDes].transform.position);
 
-			if (dist < 2 || firstTime == false) 
+			if (dist < 2 && path.enabled == true || firstTime == false) 
 			{
                 firstTime = true;
 				randDes = Random.Range (0, data.salleAléa.Length);

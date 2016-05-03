@@ -61,7 +61,7 @@ public class Zombie : IA {
 			// On récupére la position du joueur afin que l'IA se dirige vers celui-ci.
 			float dist = Vector3.Distance(player.transform.position, transform.position);
 			// Condition afin qu'il récupére toujours la position du joueur si il est suffisamment éloigné.
-			if (dist > 2)
+			if (dist > 2 && path.enabled)
 			{
 				path.destination = player.transform.position;
 			}
