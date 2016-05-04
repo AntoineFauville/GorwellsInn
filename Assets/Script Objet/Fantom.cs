@@ -8,7 +8,7 @@ public class Fantom : IA {
 	private float dist;
 	private int randDes;
 	//public Transform[] destinations;
-	private DataBase data;
+	private DataBase pathFinding;
 	private string room;
 	/**/
 
@@ -27,11 +27,12 @@ public class Fantom : IA {
 	public override void Start () 
 	{
 		base.Start ();
-		room = "Salle " + salle;
-		data = GameObject.Find (room).GetComponent<DataBase>();
+        base.salleNumber();
+        room = "Salle " + base.salle;
+        pathFinding = GameObject.Find (room).GetComponent<DataBase>();
 		path = GetComponent<NavMeshAgent> ();
-		randDes = Random.Range (0, data.salleAléa.Length);
-		path.destination = data.salleAléa [randDes].position;
+		randDes = Random.Range (0, pathFinding.salleAléa.Length);
+		path.destination = pathFinding.salleAléa [randDes].position;
 		die = this.transform.Find ("Fantom").GetComponent<Animator>();
 		StartCoroutine (SpawnCloud ());
 	}
@@ -51,16 +52,16 @@ public class Fantom : IA {
 
 	void Movement()
 	{
-		randDes = Random.Range (0, data.salleAléa.Length);
+		randDes = Random.Range (0, pathFinding.salleAléa.Length);
 
 		if (this.gameObject.tag != "Dead") 
 		{
-			dist = Vector3.Distance (this.transform.position, data.salleAléa [randDes].position);
+			dist = Vector3.Distance (this.transform.position, pathFinding.salleAléa [randDes].position);
 
 			if (dist < 2 && path.enabled) 
 			{
-				randDes = Random.Range (0, data.salleAléa.Length);
-				path.destination = data.salleAléa [randDes].position;
+				randDes = Random.Range (0, pathFinding.salleAléa.Length);
+				path.destination = pathFinding.salleAléa [randDes].position;
 			}
 		}
 	}

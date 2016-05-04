@@ -13,6 +13,8 @@ public class DataBase : MonoBehaviour {
     public int bossTaille;
     public int count;
 
+    public int actualRoom;
+
 	/* Patrouilles Statiques */
 	public Transform[] salle = new Transform[4];
 	/**/
@@ -26,5 +28,10 @@ public class DataBase : MonoBehaviour {
         count = 0;
         taille = maps.Length;
         bossTaille = bossMaps.Length;
+    }
+
+    public void ChangeNumberRoom(int x)
+    {
+        actualRoom = x; 
     }
 }

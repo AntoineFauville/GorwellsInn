@@ -21,13 +21,4 @@ public class IATransformActivator : MonoBehaviour {
             positions[i].gameObject.SetActive(false);
         }
     }
-	
-	// Update is called once per frame
-	void Update ()
-    {
-        for (int i = 0; i < nbreRand; i++)
-        {
-            //positions[i].gameObject.SetActive(true);
-        }
-	}
 }

@@ -20,7 +20,8 @@ public class Zombie : IA {
 	public override void Start () 
 	{
 		base.Start ();
-		base.life = 2;
+        base.salleNumber();
+        base.life = 2;
 		path = GetComponent<NavMeshAgent> ();
 		feet = this.transform.FindChild ("Zombie/Pied").GetComponent<Animator>();
 		body = this.transform.FindChild ("Zombie/HautDuCorps Monstres").GetComponent<Animator>();

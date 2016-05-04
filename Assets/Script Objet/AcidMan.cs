@@ -9,7 +9,7 @@ public class AcidMan : IA {
 	private int randDes;
     public bool firstTime;
 	//public Transform[] destinations;
-	private DataBase data;
+	private DataBase pathFinding;
 	private string room;
 	/**/
 
@@ -34,8 +34,9 @@ public class AcidMan : IA {
 	public override void Start () 
 	{
 		base.Start ();
+        base.salleNumber();
 		room = "Salle " + base.salle;
-		data = GameObject.Find (room).GetComponent<DataBase>();
+        pathFinding = GameObject.Find (room).GetComponent<DataBase>();
 		path = GetComponent<NavMeshAgent> ();
 		player = GameObject.Find ("Player").GetComponent<Personnage> ();
 		feet = this.transform.FindChild ("AcidMan/Pied").GetComponent<Animator>();
@@ -75,17 +76,17 @@ public class AcidMan : IA {
 
 	void Movement()
 	{
-		randDes = Random.Range (0, data.salleAléa.Length);
+		randDes = Random.Range (0, pathFinding.salleAléa.Length);
 
 		if (this.gameObject.tag != "Dead") 
 		{
-			dist = Vector3.Distance (this.transform.position, data.salleAléa [randDes].transform.position);
+			dist = Vector3.Distance (this.transform.position, pathFinding.salleAléa [randDes].transform.position);
 
 			if (dist < 2 && path.enabled == true || firstTime == false) 
 			{
                 firstTime = true;
-				randDes = Random.Range (0, data.salleAléa.Length);
-				path.destination = data.salleAléa [randDes].position;
+				randDes = Random.Range (0, pathFinding.salleAléa.Length);
+				path.destination = pathFinding.salleAléa [randDes].position;
 			}
 		}
 	}

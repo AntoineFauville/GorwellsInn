@@ -19,7 +19,8 @@ public class DarkMage : IA {
 	public override void Start () 
 	{
 		base.Start ();
-		player = GameObject.Find("Player").GetComponent<Transform>();
+        base.salleNumber();
+        player = GameObject.Find("Player").GetComponent<Transform>();
 		die = this.transform.Find ("DarkMage").GetComponent<Animator>();
 		StartCoroutine (WaitAndShot ());
 	}

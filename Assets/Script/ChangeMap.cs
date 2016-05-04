@@ -68,6 +68,8 @@ public class ChangeMap : MonoBehaviour {
                     rand = Random.Range(0, data.taille);
                 }
 
+                data.ChangeNumberRoom(rand + 1);
+
                 if (salle != 99)
                 {
                     data.previousMaps[(salle - 1)] = true;

@@ -17,7 +17,8 @@ public class IA : MonoBehaviour {
 	/* Door */
 	private string area;
 	public int salle;
-	public ChangeMap count;
+	private ChangeMap count;
+    private DataBase data;
 	/**/
 
 
@@ -26,12 +27,21 @@ public class IA : MonoBehaviour {
 		//life = 1;
 	}
 
+    void Awake()
+    {
+        data = GameObject.Find("Main Camera").GetComponent<DataBase>();
+        //salle = data.actualRoom;
+    }
+
 	public virtual void Start () 
 	{
 		joueur = GameObject.Find("Player").GetComponent<Personnage>();
 		guerrier = joueur.transform.Find ("SpriteDuJoueur/Guerrier").GetComponent<Guerrier>();
-		area = "AreaChanging" + salle;
-		count = GameObject.Find (area).GetComponent<ChangeMap> ();
+        salleNumber();
+        if (salle != 0)
+        {
+            count = GameObject.Find(area).GetComponent<ChangeMap>();
+        }
 	}
 
 	public virtual void Update () 
@@ -43,6 +53,12 @@ public class IA : MonoBehaviour {
 			count.Counter ();
 		}
 	}
+
+    public virtual void salleNumber()
+    {
+        salle = data.actualRoom;
+        area = "AreaChanging" + salle;
+    }
 
 	void OnCollisionEnter(Collision coll)
 	{

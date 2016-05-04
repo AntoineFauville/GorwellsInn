@@ -26,7 +26,8 @@ public class Skeleton : IA {
 	public override void Start () 
 	{
 		base.Start ();
-		path = GetComponent<NavMeshAgent> ();
+        base.salleNumber();
+        path = GetComponent<NavMeshAgent> ();
 		player = GameObject.Find ("Player").GetComponent<Personnage> ();
 		corps = GetComponent<Rigidbody> ();
 		feet = this.transform.FindChild ("Skeleton/Pied").GetComponent<Animator>();

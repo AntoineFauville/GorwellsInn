@@ -38,6 +38,6 @@ public class GameMenu : MonoBehaviour {
     {
         LoadingScreen.show();// Loading Screen
         //Application.LoadLevel("Main Scene"); DEPRECEATED
-		SceneManager.LoadScene ("Main Scene");
+		SceneManager.LoadScene ("Main Scene"); 
     }
 }

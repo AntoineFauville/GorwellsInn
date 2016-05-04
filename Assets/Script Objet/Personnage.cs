@@ -78,7 +78,7 @@ public class Personnage : MonoBehaviour {
 	{
 		LinkGameobject ();
 
-		if (SceneManager.GetActiveScene ().name == "Main Scene") 
+		if (SceneManager.GetActiveScene ().name == "Main Scene")
 		{
 			MainScene ();
 		}
