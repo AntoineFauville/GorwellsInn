@@ -18,3 +18,4 @@ This is a little game made with Unity that i will continue to develop.
 
 Palmeri "**Zarbisi**" Raphael /
 Fauville **Sheido**" Antoine
+Developer / Game Designer
