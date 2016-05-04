@@ -5,7 +5,7 @@ public class Owl : Boss {
 
 	/* Mouvement */
 	private NavMeshAgent path;
-	private Personnage player;
+	private Personnage joueur;
 	/**/
 
 	/* Mort */
@@ -18,7 +18,7 @@ public class Owl : Boss {
 		base.Start();
 
 		path = GetComponent<NavMeshAgent> ();
-		player = GameObject.Find ("Player").GetComponent<Personnage> ();
+        joueur = GameObject.Find ("Player").GetComponent<Personnage> ();
 	}
 
 	public override void Update () 
@@ -43,11 +43,11 @@ public class Owl : Boss {
 	public void  Mouvement()
 	{
 		// On récupére la position du joueur afin que l'IA se dirige vers celui-ci.
-		float dist = Vector3.Distance(player.transform.position, transform.position);
+		float dist = Vector3.Distance(joueur.transform.position, transform.position);
 		// Condition afin qu'il récupére toujours la position du joueur si il est suffisamment éloigné.
 		if (dist > 2)
 		{
-			path.destination = player.transform.position;
+			path.destination = joueur.transform.position;
 		}
 	}
 }

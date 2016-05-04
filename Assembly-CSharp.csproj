@@ -77,6 +77,7 @@
      <Compile Include="Assets\Script Objet\Personnage.cs" />
      <Compile Include="Assets\Script Objet\Skeleton.cs" />
      <Compile Include="Assets\Script Objet\Zombie.cs" />
+     <Compile Include="Assets\Script Test\Spawner.cs" />
      <Compile Include="Assets\Script\ABCDDeplacement.cs" />
      <Compile Include="Assets\Script\ActivationIA.cs" />
      <Compile Include="Assets\Script\ActivationIAUnique.cs" />
