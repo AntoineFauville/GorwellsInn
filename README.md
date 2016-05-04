@@ -16,6 +16,5 @@ This is a little game made with Unity that i will continue to develop.
 
 ### *Contributors:* ###
 
-Palmeri "**Zarbisi**" Raphael /
-Fauville **Sheido**" Antoine
-Developer / Game Designer
+Palmeri "**Zarbisi**" Raphael / Fauville **Sheido**" Antoine.
+Developer / Game Designer.
