@@ -8,7 +8,6 @@ public class AnimationIA : MonoBehaviour {
     private bool vertical;
     private bool attack;
     private Transform player;
-    private FollowingPlayer zombie; // permets de détecter l'attaque du zombie.
 	
     void Start()
     {
@@ -20,7 +19,6 @@ public class AnimationIA : MonoBehaviour {
 	
         if ( this.gameObject.name == "Corps 1")
         {
-            zombie = this.gameObject.GetComponent<FollowingPlayer>();
             feet.SetBool("Vertical", vertical);
             body.SetBool("Vertical", vertical);
             body.SetBool("MonstreAttack", attack);
@@ -32,12 +30,6 @@ public class AnimationIA : MonoBehaviour {
             else
             {
                 vertical = false;
-            }
-
-            if ( zombie.damaging == true)
-            {
-                attack = true;
-                StartCoroutine(WaitAndStopAttack());
             }
 
         }

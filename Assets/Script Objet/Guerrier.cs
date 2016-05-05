@@ -12,7 +12,7 @@ public class Guerrier : Personnage {
 	public GameObject weapon;
 	/**/
 
-	/* Bruitages */
+	/* Sounds */
 	private AudioSource playSoundWarrior;
 	public AudioClip[] soundsWarrior;
 	/**/

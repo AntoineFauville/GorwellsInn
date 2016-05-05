@@ -8,8 +8,8 @@ public class Boss : MonoBehaviour {
 	/**/
 
 	/* Vie */
-	public float bossLife;
-	public LaunchTimer life;
+	protected float bossLife;
+	protected LaunchTimer life;
 	/**/
 
 	/* Mort */
@@ -59,7 +59,7 @@ public class Boss : MonoBehaviour {
         }
     }
 
-	private void OnTriggerEnter(Collider contact)
+	public virtual void OnTriggerEnter(Collider contact)
 	{
 		if (contact.gameObject.tag != "Player")
 		{
@@ -67,12 +67,9 @@ public class Boss : MonoBehaviour {
 			{
 				if (damageable == true)
 				{
-					int nbresound = Random.Range (0, 3);
-
 					damageable = false;
 					hit = true;
 					bossLife--;
-					//playSound.PlayOneShot(soundsHurt[nbresound],1.0f);
 					life.Diminution();
 					//joueur.GetLife();
 					StartCoroutine(InvicibleFrame());

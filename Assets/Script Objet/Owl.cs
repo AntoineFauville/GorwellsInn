@@ -6,10 +6,15 @@ public class Owl : Boss {
 	/* Mouvement */
 	private NavMeshAgent path;
 	private Personnage joueur;
-	/**/
+    /**/
 
-	/* Mort */
-	public Animator touched;
+    /* Sounds */
+    private AudioSource playSound;
+    public AudioClip[] soundsHurt;
+    /**/
+
+    /* Mort */
+    public Animator touched;
 	public GameObject mort;
 	/**/
 
@@ -19,6 +24,7 @@ public class Owl : Boss {
 
 		path = GetComponent<NavMeshAgent> ();
         joueur = GameObject.Find ("Player").GetComponent<Personnage> ();
+        playSound = GetComponent<AudioSource>();
 	}
 
 	public override void Update () 
@@ -39,6 +45,26 @@ public class Owl : Boss {
 			Mouvement ();
 		}
 	}
+
+    public override void OnTriggerEnter(Collider contact)
+    {
+        if (contact.gameObject.tag != "Player")
+        {
+            if (contact.gameObject.tag == "Weapon")
+            {
+                if (damageable == true)
+                {
+                    damageable = false;
+                    hit = true;
+                    bossLife--;
+                    int nbresound = Random.Range(0, 3);
+                    playSound.PlayOneShot(soundsHurt[nbresound], 1.0f);
+                    life.Diminution();
+                    StartCoroutine(InvicibleFrame());
+                }
+            }
+        }
+    }
 
 	public void  Mouvement()
 	{

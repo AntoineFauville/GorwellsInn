@@ -4,7 +4,7 @@ using System.Collections;
 public class IATentacles : MonoBehaviour {
 
     public Transform player;
-    public CaracDeplacement playerInfo;
+    private Personnage playerInfo;
     [SerializeField]
     public bool[] follow;
     public Transform[] posIni;
@@ -15,7 +15,7 @@ public class IATentacles : MonoBehaviour {
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Transform>();
-        playerInfo = GameObject.Find("Player").GetComponent<CaracDeplacement>();
+        playerInfo = GameObject.Find("Player").GetComponent<Personnage>();
         randNbr = Random.Range(1, 5);
         follow[0] = false;
         follow[1] = false;

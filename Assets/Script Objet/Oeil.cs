@@ -37,14 +37,20 @@ public class Oeil : Boss {
 	private bool laserPrepa;
 	private bool shoot = false;
 	private int randLaser;
-	/**/
+    /**/
 
-	public override void Start () 
+    /* Sounds */
+    private AudioSource playSound;
+    public AudioClip[] soundsHurt;
+    /**/
+
+    public override void Start () 
 	{
 		base.Start();
 
 		path = GetComponent<NavMeshAgent> ();
-		StartCoroutine (WaitAndShot ());
+        playSound = GetComponent<AudioSource>();
+        StartCoroutine (WaitAndShot ());
 		StartCoroutine(Lazzer());
 	}
 
@@ -76,7 +82,27 @@ public class Oeil : Boss {
         }
     }
 
-	void Mouvement()
+    public override void OnTriggerEnter(Collider contact)
+    {
+        if (contact.gameObject.tag != "Player")
+        {
+            if (contact.gameObject.tag == "Weapon")
+            {
+                if (damageable == true)
+                {
+                    damageable = false;
+                    hit = true;
+                    bossLife--;
+                    int nbresound = Random.Range(0, 3);
+                    playSound.PlayOneShot(soundsHurt[nbresound], 1.0f);
+                    life.Diminution();
+                    StartCoroutine(InvicibleFrame());
+                }
+            }
+        }
+    }
+
+    void Mouvement()
 	{
 		randDes = Random.Range(0, destinations.Length);
 

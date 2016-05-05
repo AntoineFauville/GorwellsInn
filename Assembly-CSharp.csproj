@@ -47,21 +47,6 @@
   <ItemGroup>
      <Compile Include="Assets\AlphaScript.cs" />
      <Compile Include="Assets\AnimationPlayWhenTriggered.cs" />
-     <Compile Include="Assets\Old Scripts\AnimationAcidMan.cs" />
-     <Compile Include="Assets\Old Scripts\AnimationDarkMage.cs" />
-     <Compile Include="Assets\Old Scripts\AnimationFantom.cs" />
-     <Compile Include="Assets\Old Scripts\AnimationOneEye.cs" />
-     <Compile Include="Assets\Old Scripts\AnimationSkeleton.cs" />
-     <Compile Include="Assets\Old Scripts\AnimationZombie.cs" />
-     <Compile Include="Assets\Old Scripts\CaracAttack.cs" />
-     <Compile Include="Assets\Old Scripts\CaracDeplacement.cs" />
-     <Compile Include="Assets\Old Scripts\Death.cs" />
-     <Compile Include="Assets\Old Scripts\DeathBoss.cs" />
-     <Compile Include="Assets\Old Scripts\FollowingPlayer.cs" />
-     <Compile Include="Assets\Old Scripts\IACharge.cs" />
-     <Compile Include="Assets\Old Scripts\IAPatrol.cs" />
-     <Compile Include="Assets\Old Scripts\IAPatrolStatic.cs" />
-     <Compile Include="Assets\Old Scripts\LazerShot.cs" />
      <Compile Include="Assets\Script Objet\AcidMan.cs" />
      <Compile Include="Assets\Script Objet\Archer.cs" />
      <Compile Include="Assets\Script Objet\Boss.cs" />
