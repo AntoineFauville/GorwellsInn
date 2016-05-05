@@ -18,6 +18,7 @@ public class Boss : MonoBehaviour {
 	protected bool damageable = true;
 	protected bool hit = false;
 	protected bool dead = false;
+    private bool healedPlayer = false;
     private Personnage player;
 	/**/
 
@@ -53,8 +54,9 @@ public class Boss : MonoBehaviour {
 			bodyPart++;
 		}
 
-        if (PlayerPrefs.GetString("Difficulty") == "Easy")
+        if (PlayerPrefs.GetString("Difficulty") == "Easy" && healedPlayer == false)
         {
+            healedPlayer = true;
             player.life.fillAmount = 1;
         }
     }

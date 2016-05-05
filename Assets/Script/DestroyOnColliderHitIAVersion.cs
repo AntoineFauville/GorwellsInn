@@ -3,18 +3,18 @@ using System.Collections;
 
 public class DestroyOnColliderHitIAVersion : MonoBehaviour {
 
-	public Personnage playerInfo;
+	public Personnage player;
 
     void Start()
     {
-		playerInfo = GameObject.Find("Player").GetComponent<Personnage>();
+		player = GameObject.Find("Player").GetComponent<Personnage>();
     }
 
     void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            playerInfo.TakeDamage();
+            player.TakeDamage();
             Destroy(this.gameObject);
         }
         else if (collision.gameObject.tag == "Weapon")

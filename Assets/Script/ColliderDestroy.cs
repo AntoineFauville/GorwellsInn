@@ -3,11 +3,11 @@ using System.Collections;
 
 public class ColliderDestroy : MonoBehaviour {
 
-	public Personnage playerInfo;
+	public Personnage player;
 
     void Start()
     {
-		playerInfo = GameObject.Find("Player").GetComponent<Personnage>();
+		player = GameObject.Find("Player").GetComponent<Personnage>();
     }
 
     void OnTriggerEnter(Collider collision)
@@ -19,7 +19,7 @@ public class ColliderDestroy : MonoBehaviour {
         }
         else if (collision.gameObject.tag == "Player")
         {
-            playerInfo.TakeDamage();
+            player.TakeDamage();
             Destroy(this.gameObject);
         }
         else if (collision.gameObject.tag != "Sol" && collision.gameObject.tag != "Trap" && collision.gameObject.tag != "Slower" && collision.gameObject.tag != "IA" && collision.gameObject.tag != "Dead"  )
