@@ -17,6 +17,7 @@ This is a little game made with Unity that i will continue to develop.
 
 ## **TODO:** ##
 
+- Add confirmation to exit the game.
 - Add news Ennemies.
 - Add news Bosses.
 - Add news Classes.
