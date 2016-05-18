@@ -1,11 +1,16 @@
-﻿	**v0.4:**
+﻿	v0.4.1:
+	
+			- Ajout d'une fenêtre de confirmation pour quitter le jeu (Menu-Taverne et Dungeon).
+
+=======================================================================================================================================================================
+	
+	v0.4:
 	
 			- Script du spawn d'ennemi refait.
 			- Ajout Bruitages.
 			- Ajout musique d'ambiance donjon.
 			- Fix du bug de spawn de nuage et acide aprés la mort.
 			- Bug de vie toujours présents(Hotfix mis en place. Need Feed-Back!!!).
-			
 
 =======================================================================================================================================================================
 
