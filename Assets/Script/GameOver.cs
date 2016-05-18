@@ -69,6 +69,12 @@ public class GameOver : MonoBehaviour {
 
     public void Scoring()
     {
+        float finalScore = 0;
+        float score1 = PlayerPrefs.GetFloat("Score1");
+        float score2 = PlayerPrefs.GetFloat("Score2");
+        float score3 = PlayerPrefs.GetFloat("Score3");
+        float score4 = PlayerPrefs.GetFloat("Score4");
+        float score5 = PlayerPrefs.GetFloat("Score5");
         int salleGame = level.count;
         int salleScore1 = PlayerPrefs.GetInt("NumSalle1");
         int salleScore2 = PlayerPrefs.GetInt("NumSalle2");
@@ -103,100 +109,127 @@ public class GameOver : MonoBehaviour {
         string difficult4 = PlayerPrefs.GetString("Mode4");
         string difficult5 = PlayerPrefs.GetString("Mode5");
 
+        /* Calcul du Score*/
 
-        if (salleGame > salleScore1 || salleGame == salleScore1 && timeGame < timeScore1)
+        if (salleGame == 12)
+        {
+            finalScore = (1 / timeGame) * 10000;
+
+            if (difficult == "Hard")
+            {
+                finalScore = finalScore * 2;
+            }
+        }
+        /**/
+
+        if (finalScore > score1 || salleGame > salleScore1 || salleGame == salleScore1 && timeGame < timeScore1)
         {
             // l'ancien score devient le second et ainsi de suite
             /*2*/
+            PlayerPrefs.SetFloat("Score2", score1);
             PlayerPrefs.SetInt("NumSalle2", salleScore1);
             PlayerPrefs.SetString("Classe2", classeScore1);
             PlayerPrefs.SetFloat("Time2", timeScore1);
             PlayerPrefs.SetString("Mode2", difficult1);
             /*3*/
+            PlayerPrefs.SetFloat("Score3", score2);
             PlayerPrefs.SetInt("NumSalle3", salleScore2);
             PlayerPrefs.SetString("Classe3", classeScore2);
             PlayerPrefs.SetFloat("Time3", timeScore2);
             PlayerPrefs.SetString("Mode3", difficult2);
             /*4*/
+            PlayerPrefs.SetFloat("Score4", score3);
             PlayerPrefs.SetInt("NumSalle4", salleScore3);
             PlayerPrefs.SetString("Classe4", classeScore3);
             PlayerPrefs.SetFloat("Time4", timeScore3);
             PlayerPrefs.SetString("Mode4", difficult3);
             /*5*/
+            PlayerPrefs.SetFloat("Score5", score4);
             PlayerPrefs.SetInt("NumSalle5", salleScore4);
             PlayerPrefs.SetString("Classe5", classeScore4);
             PlayerPrefs.SetFloat("Time5", timeScore4);
             PlayerPrefs.SetString("Mode5", difficult4);
 
             // Deviens le Score n°1
+            PlayerPrefs.SetFloat("Score1", finalScore);
             PlayerPrefs.SetInt("NumSalle1", salleGame);
             PlayerPrefs.SetString("Classe1", classeGame);
             PlayerPrefs.SetFloat("Time1", timeGame);
             PlayerPrefs.SetString("Mode1", difficult);
         }
-        else if (salleGame > salleScore2 || salleGame == salleScore1 && timeGame < timeScore2)
+        else if (finalScore > score2 || salleGame > salleScore2 || salleGame == salleScore1 && timeGame < timeScore2)
         {
             // l'ancien score devient le second et ainsi de suite
             /*3*/
+            PlayerPrefs.SetFloat("Score3", score2);
             PlayerPrefs.SetInt("NumSalle3", salleScore2);
             PlayerPrefs.SetString("Classe3", classeScore2);
             PlayerPrefs.SetFloat("Time3", timeScore2);
             PlayerPrefs.SetString("Mode3", difficult2);
             /*4*/
+            PlayerPrefs.SetFloat("Score4", score3);
             PlayerPrefs.SetInt("NumSalle4", salleScore3);
             PlayerPrefs.SetString("Classe4", classeScore3);
             PlayerPrefs.SetFloat("Time4", timeScore3);
             PlayerPrefs.SetString("Mode4", difficult3);
             /*5*/
+            PlayerPrefs.SetFloat("Score5", score4);
             PlayerPrefs.SetInt("NumSalle5", salleScore4);
             PlayerPrefs.SetString("Classe5", classeScore4);
             PlayerPrefs.SetFloat("Time5", timeScore4);
             PlayerPrefs.SetString("Mode5", difficult4);
 
             //Deviens le Score n° 2
+            PlayerPrefs.SetFloat("Score2", finalScore);
             PlayerPrefs.SetInt("NumSalle2", salleGame);
             PlayerPrefs.SetString("Classe2", classeGame);
             PlayerPrefs.SetFloat("Time2", timeGame);
             PlayerPrefs.SetString("Mode2", difficult);
         }
-        else if (salleGame > salleScore3 || salleGame == salleScore1 && timeGame < timeScore3)
+        else if (finalScore > score3 || salleGame > salleScore3 || salleGame == salleScore1 && timeGame < timeScore3)
         {
             // l'ancien score devient le second et ainsi de suite
             /*4*/
+            PlayerPrefs.SetFloat("Score4", score3);
             PlayerPrefs.SetInt("NumSalle4", salleScore3);
             PlayerPrefs.SetString("Classe4", classeScore3);
             PlayerPrefs.SetFloat("Time4", timeScore3);
             PlayerPrefs.SetString("Mode4", difficult3);
             /*5*/
+            PlayerPrefs.SetFloat("Score5", score4);
             PlayerPrefs.SetInt("NumSalle5", salleScore4);
             PlayerPrefs.SetString("Classe5", classeScore4);
             PlayerPrefs.SetFloat("Time5", timeScore4);
             PlayerPrefs.SetString("Mode5", difficult4);
 
             //Deviens le Score n° 3
+            PlayerPrefs.SetFloat("Score3", finalScore);
             PlayerPrefs.SetInt("NumSalle3", salleGame);
             PlayerPrefs.SetString("Classe3", classeGame);
             PlayerPrefs.SetFloat("Time3", timeGame);
             PlayerPrefs.SetString("Mode3", difficult);
         }
-        else if (salleGame > salleScore4 || salleGame == salleScore1 && timeGame < timeScore4)
+        else if (finalScore > score4 || salleGame > salleScore4 || salleGame == salleScore1 && timeGame < timeScore4)
         {
             // l'ancien score devient le second et ainsi de suite
             /*5*/
+            PlayerPrefs.SetFloat("Score5", score4);
             PlayerPrefs.SetInt("NumSalle5", salleScore4);
             PlayerPrefs.SetString("Classe5", classeScore4);
             PlayerPrefs.SetFloat("Time5", timeScore4);
             PlayerPrefs.SetString("Mode5", difficult4);
 
             //Deviens le Score n° 4
+            PlayerPrefs.SetFloat("Score4", finalScore);
             PlayerPrefs.SetInt("NumSalle4", salleGame);
             PlayerPrefs.SetString("Classe4", classeGame);
             PlayerPrefs.SetFloat("Time4", timeGame);
             PlayerPrefs.SetString("Mode4", difficult);
         }
-        else if (salleGame > salleScore5 || salleGame == salleScore1 && timeGame < timeScore5)
+        else if (finalScore > score5 || salleGame > salleScore5 || salleGame == salleScore1 && timeGame < timeScore5)
         {
             //Deviens le Score n° 5
+            PlayerPrefs.SetFloat("Score5", finalScore);
             PlayerPrefs.SetInt("NumSalle5", salleGame);
             PlayerPrefs.SetString("Classe5", classeGame);
             PlayerPrefs.SetFloat("Time5", timeGame);

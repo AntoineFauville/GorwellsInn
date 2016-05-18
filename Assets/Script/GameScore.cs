@@ -11,22 +11,27 @@ public class GameScore : MonoBehaviour {
     public Text P5;
 
     // Les différents scores à afficher
+    private float score1;
     private int numSalle1;
     private float timer1;
     private string classe1;
     private string difficult1;
+    private float score2;
     private int numSalle2;
     private float timer2;
     private string classe2;
     private string difficult2;
+    private float score3;
     private int numSalle3;
     private float timer3;
     private string classe3;
     private string difficult3;
+    private float score4;
     private int numSalle4;
     private float timer4;
     private string classe4;
     private string difficult4;
+    private float score5;
     private int numSalle5;
     private float timer5;
     private string classe5;
@@ -42,26 +47,31 @@ public class GameScore : MonoBehaviour {
     void Start ()
     {
         // Load Scores registered
+        score1 = PlayerPrefs.GetFloat("Score1");
         numSalle1 = PlayerPrefs.GetInt("NumSalle1");
         timer1 = PlayerPrefs.GetFloat("Time1");
         classe1 = PlayerPrefs.GetString("Classe1");
         difficult1 = PlayerPrefs.GetString("Mode1");
 
+        score2 = PlayerPrefs.GetFloat("Score2");
         numSalle2 = PlayerPrefs.GetInt("NumSalle2");
         timer2 = PlayerPrefs.GetFloat("Time2");
         classe2 = PlayerPrefs.GetString("Classe2");
         difficult2 = PlayerPrefs.GetString("Mode2");
 
+        score3 = PlayerPrefs.GetFloat("Score3");
         numSalle3 = PlayerPrefs.GetInt("NumSalle3");
         timer3 = PlayerPrefs.GetFloat("Time3");
         classe3 = PlayerPrefs.GetString("Classe3");
         difficult3 = PlayerPrefs.GetString("Mode3");
 
+        score4 = PlayerPrefs.GetFloat("Score4");
         numSalle4 = PlayerPrefs.GetInt("NumSalle4");
         timer4 = PlayerPrefs.GetFloat("Time4");
         classe4 = PlayerPrefs.GetString("Classe4");
         difficult4 = PlayerPrefs.GetString("Mode4");
 
+        score5 = PlayerPrefs.GetFloat("Score5");
         numSalle5 = PlayerPrefs.GetInt("NumSalle5");
         timer5 = PlayerPrefs.GetFloat("Time5");
         classe5 = PlayerPrefs.GetString("Classe5");
@@ -73,15 +83,15 @@ public class GameScore : MonoBehaviour {
         timeDisplay4 = System.TimeSpan.FromSeconds(timer4);
         timeDisplay5 = System.TimeSpan.FromSeconds(timer5);
 
-        P1.text = "          " + numSalle1 + "              " + string.Format("{0}:{01:00}", timeDisplay1.Minutes, timeDisplay1.Seconds) + "           " + classe1 + "           " + difficult1;
+        P1.text = score1 + "          " + numSalle1 + "              " + string.Format("{0}:{01:00}", timeDisplay1.Minutes, timeDisplay1.Seconds) + "           " + classe1 + "           " + difficult1;
 
-		P2.text = "          " + numSalle2 + "              " + string.Format("{0}:{01:00}", timeDisplay2.Minutes, timeDisplay2.Seconds) + "           " + classe2 + "           " + difficult2;
+		P2.text = score2 + "          " + numSalle2 + "              " + string.Format("{0}:{01:00}", timeDisplay2.Minutes, timeDisplay2.Seconds) + "           " + classe2 + "           " + difficult2;
 
-		P3.text = "          " + numSalle3 + "              " + string.Format("{0}:{01:00}", timeDisplay3.Minutes, timeDisplay3.Seconds) + "           " + classe3 + "           " + difficult3;
+		P3.text = score3 + "          " + numSalle3 + "              " + string.Format("{0}:{01:00}", timeDisplay3.Minutes, timeDisplay3.Seconds) + "           " + classe3 + "           " + difficult3;
 
-		P4.text = "          " + numSalle4 + "              " + string.Format("{0}:{01:00}", timeDisplay4.Minutes, timeDisplay4.Seconds) + "           " + classe4 + "           " + difficult4;
+		P4.text = score4 + "          " + numSalle4 + "              " + string.Format("{0}:{01:00}", timeDisplay4.Minutes, timeDisplay4.Seconds) + "           " + classe4 + "           " + difficult4;
 
-		P5.text = "          " + numSalle5 + "              " + string.Format("{0}:{01:00}", timeDisplay5.Minutes, timeDisplay5.Seconds) + "           " + classe5 + "           " + difficult5;
+		P5.text = score5 + "          " + numSalle5 + "              " + string.Format("{0}:{01:00}", timeDisplay5.Minutes, timeDisplay5.Seconds) + "           " + classe5 + "           " + difficult5;
     }
 
     void Reset ()
