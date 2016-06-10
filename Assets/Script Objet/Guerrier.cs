@@ -26,6 +26,12 @@ public class Guerrier : Personnage {
 		warrior = anim.transform.Find ("HautDuCorps").GetComponent<Animator>();
 		warriorFeet = anim.transform.Find ("Pied").GetComponent<Animator>();
 		playSoundWarrior = anim.GetComponent<AudioSource> ();
+
+        if (PlayerPrefs.GetInt("WarriorVictory") > 0)
+        {
+            weapon = Resources.Load("Epee Second") as GameObject;
+        }
+
 	}
 
 	public override void Update () 
