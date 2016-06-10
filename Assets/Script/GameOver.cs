@@ -32,14 +32,37 @@ public class GameOver : MonoBehaviour {
         }
         else if (Archer.activeSelf == true)
         {
-            classPlayer.text = "Marksman";
+            classPlayer.text = "Archer";
         }
         else if (Warrior.activeSelf == true)
         {
-            classPlayer.text = "Warrior";
+            classPlayer.text = "Guerrier";
         }
 
 		classPlayer.text = PlayerPrefs.GetString ("Classe");
+
+        /* Count Victory by class */
+
+        if (classPlayer.text == "Mage" && level.count == 12)
+        {
+            int mageVictory = PlayerPrefs.GetInt("MageVictory");
+            mageVictory += 1;
+            PlayerPrefs.SetInt("MageVictory", mageVictory);
+        }
+        else if (classPlayer.text == "Archer" && level.count == 12)
+        {
+            int marksmanVictory = PlayerPrefs.GetInt("MarksmanVictory");
+            marksmanVictory += 1;
+            PlayerPrefs.SetInt("MarksmanVictory", marksmanVictory);
+        }
+        else if (classPlayer.text == "Guerrier" && level.count == 12)
+        {
+            int warriorVictory = PlayerPrefs.GetInt("WarriorVictory");
+            warriorVictory += 1;
+            PlayerPrefs.SetInt("WarriorVictory", warriorVictory);
+        }
+
+        /**/
 
         PlayerPrefs.SetString("previousClasse", classPlayer.text);
 
