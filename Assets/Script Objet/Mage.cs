@@ -28,7 +28,13 @@ public class Mage : Personnage {
 		magician = anim.transform.Find ("HautDuCorps").GetComponent<Animator>();
 		magicianFeet = anim.transform.Find ("Pied").GetComponent<Animator>();
 		playSoundMage = anim.GetComponent<AudioSource> ();
-	}
+
+        if (PlayerPrefs.GetInt("MageVictory") > 0)
+        {
+            weapon = Resources.Load("Boulet Second") as GameObject;
+        }
+
+    }
 
 	public override void Update () 
 	{

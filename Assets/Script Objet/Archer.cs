@@ -28,7 +28,13 @@ public class Archer : Personnage {
 		marksman = anim.transform.Find ("HautDuCorps").GetComponent<Animator>();
 		marksmanFeet = anim.transform.Find ("Pied").GetComponent<Animator>();
 		playSoundMarksman = anim.GetComponent<AudioSource> ();
-	}
+
+        if (PlayerPrefs.GetInt("MarksmanVictory") > 0)
+        {
+            weapon = Resources.Load("Arrow Second") as GameObject;
+        }
+
+    }
 
 	public override void Update () 
 	{
