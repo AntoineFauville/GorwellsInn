@@ -10,6 +10,7 @@ public class IA : MonoBehaviour {
 	/* Mort */
 	private bool damagable = true;
 	protected bool mort = false;
+    private GameObject itemSpawn;
 	private Personnage joueur;
 	private Guerrier guerrier;
 	/**/
@@ -42,7 +43,8 @@ public class IA : MonoBehaviour {
         {
             count = GameObject.Find(area).GetComponent<ChangeMap>();
         }
-	}
+        itemSpawn = Resources.Load("SpeedPotion") as GameObject;
+    }
 
 	public virtual void Update () 
 	{
@@ -51,6 +53,12 @@ public class IA : MonoBehaviour {
 			mort = true;
 			this.gameObject.tag = "Dead";
 			count.Counter ();
+            int rand = 0;
+            rand = Random.Range(0, 10);
+            if (rand == 4)
+            {
+                Instantiate(itemSpawn, this.transform.position, Quaternion.Euler(0, -90, 0));
+            }
 		}
 	}
 

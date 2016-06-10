@@ -18,7 +18,8 @@ public class Personnage : MonoBehaviour {
 	public Image life;
 	private bool damagable = true;
 	private bool slow = false;
-	Animator hitAnimation;
+    private bool speedUpTime = false;
+    Animator hitAnimation;
 	/**/
 
 	/* Mort */
@@ -144,6 +145,15 @@ public class Personnage : MonoBehaviour {
 		{
 			moveSpeed = 10f;
 		}
+
+        if (speedUpTime == true)
+        {
+            moveSpeed = 15f;
+        }
+        else if (speedUpTime == false)
+        {
+            moveSpeed = 10f;
+        }
 
 		if (SceneManager.GetActiveScene ().name == "Main Scene") 
 		{
@@ -286,6 +296,11 @@ public class Personnage : MonoBehaviour {
             slowIndicator.gameObject.SetActive(true);
 			StartCoroutine (SlowTime ());
 		}
+        else if (trap.gameObject.tag == "SpeedUp")
+        {
+            speedUpTime = true;
+            StartCoroutine(SpeedUpTime());
+        }
 		else if (trap.gameObject.tag == "Training")
 		{
 			training = true;
@@ -331,6 +346,15 @@ public class Personnage : MonoBehaviour {
             slowIndicator.gameObject.SetActive(false);
         }
 	}
+
+    IEnumerator SpeedUpTime()
+    {
+        if (speedUpTime == true)
+        {
+            yield return new WaitForSeconds(1.1f);
+            speedUpTime = false;
+        }
+    }
 
 	IEnumerator Die()
 	{

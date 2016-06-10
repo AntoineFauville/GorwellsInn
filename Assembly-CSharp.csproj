@@ -78,6 +78,7 @@
      <Compile Include="Assets\Script\ColliderDestroy.cs" />
      <Compile Include="Assets\Script\CthulhuZone.cs" />
      <Compile Include="Assets\Script\DataBase.cs" />
+     <Compile Include="Assets\Script\DestroyContactWithPlayer.cs" />
      <Compile Include="Assets\Script\DestroyGameObjectAfterOneSec.cs" />
      <Compile Include="Assets\Script\DestroyOnColliderHit.cs" />
      <Compile Include="Assets\Script\DestroyOnColliderHitIAVersion.cs" />

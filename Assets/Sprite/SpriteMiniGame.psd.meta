@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 0e49863631b423f4eb3c036b13ffeea9
-timeCreated: 1465556127
+timeCreated: 1465582293
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -7460,6 +7460,17 @@ TextureImporter:
         y: 490
         width: 15
         height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: SpriteMiniGame_76
+      rect:
+        serializedVersion: 2
+        x: 1419
+        y: 53
+        width: 14
+        height: 19
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
