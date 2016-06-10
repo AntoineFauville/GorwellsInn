@@ -22,7 +22,6 @@ This is a little game made with Unity that i will continue to develop.
 - Cooperation Mode.
 - PVP Mode.
 - Score stored online.
-- Boost items.
 - Add news Ennemies.
 - Add news Bosses.
 - Add news Classes.
@@ -31,7 +30,8 @@ This is a little game made with Unity that i will continue to develop.
 ## **CURRENTLY IN PROGRESS:** ##
 
 - New Score System.
-- Visual Change after Win. 
+- Visual Change after Win.
+- Boost items. 
 
 ### *Contributors:* ###
 
