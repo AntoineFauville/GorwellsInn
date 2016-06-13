@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Pathfinding;
 
 public class Zombie : IA {
 
 	/* Mouvement */
 	private NavMeshAgent path;
 	private Personnage player;
+    public Vector3 targetPosition;
 	/**/
 
 	/* Mort */
@@ -59,13 +61,23 @@ public class Zombie : IA {
 	{
 		if (this.gameObject.tag != "Dead") 
 		{
-			// On récupére la position du joueur afin que l'IA se dirige vers celui-ci.
+            /* OLD PATHFINDING SYSTEM
+            // On récupére la position du joueur afin que l'IA se dirige vers celui-ci.
 			float dist = Vector3.Distance(player.transform.position, transform.position);
 			// Condition afin qu'il récupére toujours la position du joueur si il est suffisamment éloigné.
 			if (dist > 2 && path.enabled)
 			{
 				path.destination = player.transform.position;
 			}
+            */
+
+            Seeker seeker = GetComponent<Seeker>();
+            seeker.StartPath(transform.position, player.transform.position, OnPathComplete);
 		}
 	}
+
+    public void OnPathComplete (Path p)
+    {
+        Debug.Log("Yay, we got a path back. Did it have an error? " + p.error);
+    }
 }
