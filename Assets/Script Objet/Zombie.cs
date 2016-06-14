@@ -5,14 +5,12 @@ using Pathfinding;
 public class Zombie : IA {
 
 	/* Mouvement */
-	private NavMeshAgent path;
 	private Personnage player;
-
+    private AILerpPursuit follow;
     private Seeker seeker;
-    private CharacterController controller;
-    public Path way;
-    public float speed = 15;
-    public float nextWaypointDistance = 3;
+    private Path way;
+    private float speed = 6;
+    private float nextWaypointDistance = 3;
     private int currentWaypoint = 0;
 	/**/
 
@@ -30,22 +28,22 @@ public class Zombie : IA {
 		base.Start ();
         base.salleNumber();
         base.life = 2;
-		path = GetComponent<NavMeshAgent> ();
 		feet = this.transform.FindChild ("Zombie/Pied").GetComponent<Animator>();
 		body = this.transform.FindChild ("Zombie/HautDuCorps Monstres").GetComponent<Animator>();
 		player = GameObject.Find ("Player").GetComponent<Personnage> ();
 		die = this.transform.Find ("Zombie").GetComponent<Animator>();
+        follow = GetComponent<AILerpPursuit>();
     }
 
 	public override void Update () 
 	{
 		base.Update ();
-		Mouvement ();
+		//Mouvement ();
 		die.SetBool("Mort", mort);
 
 		if (mort == true) 
 		{
-			path.enabled = false;
+            follow.OnDisable();
 		}
 
 		if (this.gameObject.tag != "Dead") 
@@ -60,7 +58,7 @@ public class Zombie : IA {
 				feet.SetBool("Vertical", false);
 				body.SetBool("Vertical", false);
 			}
-		}
+        }
 	}
 
 	void Mouvement()
@@ -77,10 +75,14 @@ public class Zombie : IA {
 			}
             */
 
-            seeker = GetComponent<Seeker>();
-            seeker.StartPath(this.transform.position, player.transform.position);
+            /*if (AstarPath.active == null) return;
 
-           /* if (way == null)
+            var p = ABPath.Construct(transform.position, player.transform.position, OnPathComplete);
+
+            AstarPath.StartPath(p);*/
+
+            // Mouvement A*
+            if (way == null)
             {
                 return;
             }
@@ -88,17 +90,38 @@ public class Zombie : IA {
             if (currentWaypoint >= way.vectorPath.Count)
             {
                 Debug.Log("End of Path Reached");
+                currentWaypoint = 0;
                 return;
             }
+
             Vector3 dir = (way.vectorPath[currentWaypoint] - transform.position).normalized;
             dir *= speed * Time.deltaTime;
-            controller.SimpleMove(dir);
+            transform.Translate(dir);
+            print("Moving to next point");
 
-            if (Vector3.Distance (transform.position,way.vectorPath[currentWaypoint]) < nextWaypointDistance)
+            if (Vector3.Distance(transform.position, way.vectorPath[currentWaypoint]) < nextWaypointDistance)
             {
+                print("Next Waypoint");
                 currentWaypoint++;
                 return;
-            }*/
-		}
+            }
+
+            if (Vector3.Distance(transform.position, player.transform.position) > 2)
+            {
+                seeker.StartPath(this.transform.position, player.transform.position, OnPathComplete);
+            }
+
+        }
 	}
+
+    public void OnPathComplete(Path p)
+    {
+        Debug.Log("Yay, we got a path back. Did it have an error? " + p.error);
+        if (!p.error)
+        {
+            way = p;
+            //Reset the waypoint counter
+            currentWaypoint = 0;
+        }
+    }
 }

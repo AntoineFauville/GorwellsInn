@@ -65,7 +65,6 @@ public class ChangeMapUnique : MonoBehaviour {
             {
                 rand = Random.Range(0, data.taille);
 
-
                 while (rand == (salle - 1) || data.previousMaps[rand] == true)
                 {
                     rand = Random.Range(0, data.taille);
