@@ -7,7 +7,13 @@ public class Zombie : IA {
 	/* Mouvement */
 	private NavMeshAgent path;
 	private Personnage player;
-    public Vector3 targetPosition;
+
+    private Seeker seeker;
+    private CharacterController controller;
+    public Path way;
+    public float speed = 15;
+    public float nextWaypointDistance = 3;
+    private int currentWaypoint = 0;
 	/**/
 
 	/* Mort */
@@ -29,7 +35,7 @@ public class Zombie : IA {
 		body = this.transform.FindChild ("Zombie/HautDuCorps Monstres").GetComponent<Animator>();
 		player = GameObject.Find ("Player").GetComponent<Personnage> ();
 		die = this.transform.Find ("Zombie").GetComponent<Animator>();
-	}
+    }
 
 	public override void Update () 
 	{
@@ -71,13 +77,28 @@ public class Zombie : IA {
 			}
             */
 
-            Seeker seeker = GetComponent<Seeker>();
-            seeker.StartPath(transform.position, player.transform.position, OnPathComplete);
+            seeker = GetComponent<Seeker>();
+            seeker.StartPath(this.transform.position, player.transform.position);
+
+           /* if (way == null)
+            {
+                return;
+            }
+
+            if (currentWaypoint >= way.vectorPath.Count)
+            {
+                Debug.Log("End of Path Reached");
+                return;
+            }
+            Vector3 dir = (way.vectorPath[currentWaypoint] - transform.position).normalized;
+            dir *= speed * Time.deltaTime;
+            controller.SimpleMove(dir);
+
+            if (Vector3.Distance (transform.position,way.vectorPath[currentWaypoint]) < nextWaypointDistance)
+            {
+                currentWaypoint++;
+                return;
+            }*/
 		}
 	}
-
-    public void OnPathComplete (Path p)
-    {
-        Debug.Log("Yay, we got a path back. Did it have an error? " + p.error);
-    }
 }

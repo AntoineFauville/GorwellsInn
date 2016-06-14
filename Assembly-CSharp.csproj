@@ -191,6 +191,7 @@
      <Compile Include="Assets\Script\TipsTime.cs" />
      <Compile Include="Assets\Script\UpDownPlane.cs" />
      <Compile Include="Assets\Script\typeIA.cs" />
+     <Compile Include="Assets\TestPathFinding.cs" />
      <None Include="Assets\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh.shader" />
      <None Include="Assets\AstarPathfindingProject\Plugins\DotNetZip\DotNetZipLicense.txt" />
      <None Include="Assets\AstarPathfindingProject\ExampleScenes\Materials\Projector Multiply.shader" />
