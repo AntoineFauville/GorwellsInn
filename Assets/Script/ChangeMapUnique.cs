@@ -11,7 +11,8 @@ public class ChangeMapUnique : MonoBehaviour {
     public int rand = -1;
 
     public DataBase data;
-    public GameObject gameOver;
+    public GameObject canvas;
+    public Transform gameOver;
     public Text endOfGame;
 	int victoryCount;
 
@@ -27,7 +28,11 @@ public class ChangeMapUnique : MonoBehaviour {
 		player = GameObject.Find ("Player");
         nbreIA = 1;
         NextRoom = false;
-        //gameOver = GameObject.Find("GameOverPanel");
+        cam = GameObject.Find("Main Camera").GetComponent<Camera>();
+        data = GameObject.Find("Main Camera").GetComponent<DataBase>();
+        canvas = GameObject.Find("Canvas");
+        gameOver = canvas.transform.FindChild("GameOverPanel");
+        endOfGame = gameOver.transform.FindChild("TextGameOver").GetComponent<Text>();
 		victoryCount = PlayerPrefs.GetInt("Victory");
     }
 
@@ -53,7 +58,7 @@ public class ChangeMapUnique : MonoBehaviour {
 
             if (data.count == 12) // Victoire aprés 3 boss ^^
             {
-                gameOver.SetActive(true);
+                gameOver.gameObject.SetActive(true);
                 endOfGame.text = "Victory";
 				victoryCount = victoryCount + 1;
 				PlayerPrefs.SetInt ("Victory", victoryCount);

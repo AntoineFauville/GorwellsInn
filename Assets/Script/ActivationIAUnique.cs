@@ -19,6 +19,9 @@ public class ActivationIAUnique : MonoBehaviour {
 
     void Start()
     {
+        cam = GameObject.Find("Main Camera").GetComponent<Camera>();
+        data = GameObject.Find("Main Camera").GetComponent<DataBase>();
+        player = GameObject.Find("Player");
         nbreIA = 1;
         IA.SetActive(false);
     }

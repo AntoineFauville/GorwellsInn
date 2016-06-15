@@ -26,6 +26,9 @@ public class ChangeMap : MonoBehaviour {
 	void Start ()
 	{
 		player = GameObject.Find ("Player");
+        cam = GameObject.Find("Main Camera").GetComponent<Camera>();
+        data = GameObject.Find("Main Camera").GetComponent<DataBase>();
+        mode = GameObject.Find("TriggerEasyLaunchGame").GetComponent<LaunchTimer>();
         nbreIA = nbreEnemy.nbreRand;
         NextRoom = false;
 	}
