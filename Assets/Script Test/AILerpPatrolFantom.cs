@@ -4,19 +4,21 @@ using System.Collections.Generic;
 using Pathfinding;
 
 [RequireComponent(typeof(Seeker))]
-public class AILerpPursuit : MonoBehaviour {
+public class AILerpPatrolFantom : MonoBehaviour {
 
     /** Determines how often it will search for new paths.
-	 * If you have fast moving targets or AIs, you might want to set it to a lower value.
-	 * The value is in seconds between path requests.
-	 */
+   * If you have fast moving targets or AIs, you might want to set it to a lower value.
+   * The value is in seconds between path requests.
+   */
     public float repathRate = 0.5F;
 
     /** Target to move towards.
 	 * The AI will try to follow/move towards this target.
 	 * It can be a point on the ground where the player has clicked in an RTS for example, or it can be the player object in a zombie game.
 	 */
-    private Vector3 target;
+    public Vector3 target;
+    public DataBase pathFinding;
+    private int i = 0;
 
     /** Enables or disables searching for paths.
 	 * Setting this to false does not stop any active path requests from being calculated or stop it from continuing to follow the current path.
@@ -29,7 +31,7 @@ public class AILerpPursuit : MonoBehaviour {
     public bool canMove = true;
 
     /** Speed in world units */
-    public float speed = 3;
+    public float speed = 5;
 
     /** If true, the AI will rotate to face the movement direction */
     public bool enableRotation = true;
@@ -120,7 +122,9 @@ public class AILerpPursuit : MonoBehaviour {
     {
         startHasRun = true;
 
-        target = GameObject.Find("Player").transform.position;
+        pathFinding = GameObject.Find(GetComponent<Fantom>().room).GetComponent<DataBase>();
+        i = Random.Range(0, pathFinding.salleAléa.Length);
+        target = pathFinding.salleAléa[i].transform.position;
 
         OnEnable();
     }
@@ -207,7 +211,7 @@ public class AILerpPursuit : MonoBehaviour {
 
         lastRepath = Time.time;
         // This is where we should search to
-        var targetPosition = GameObject.Find("Player").transform.position; // target.position
+        var targetPosition = pathFinding.salleAléa[i].transform.position; // target.position
         var currentPosition = GetFeetPosition();
 
         // If we are following a path, start searching from the node we will reach next
@@ -235,6 +239,8 @@ public class AILerpPursuit : MonoBehaviour {
 	 */
     public virtual void OnTargetReached()
     {
+        i = Random.Range(0, pathFinding.salleAléa.Length);
+        SearchPath();
     }
 
     /** Called when a requested path has finished calculation.

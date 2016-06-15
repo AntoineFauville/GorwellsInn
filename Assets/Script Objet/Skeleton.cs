@@ -84,9 +84,11 @@ public class Skeleton : IA {
 		if (charge == false && corps.tag != "Dead")
 		{
 			StartCoroutine(WaitAndCharge());
-            corps.velocity = (player.transform.position - transform.position).normalized * 20;
+            //corps.velocity = (player.transform.position - transform.position).normalized * 20;
+            follow.speed = 8;
 			// Cette ligne permet de cibler vers le joueur.
-			charge = true;	
+			charge = true;
+            follow.speed = 5;	
 		}	
 	}
 

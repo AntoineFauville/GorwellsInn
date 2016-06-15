@@ -3,14 +3,14 @@ using System.Collections;
 
 public class AcidMan : IA {
 
-	/* Mouvement */
-	private NavMeshAgent path;
+    /* Mouvement */
+    private AILerpPatrolAcidman patrol;
 	private float dist;
 	private int randDes;
     public bool firstTime;
 	//public Transform[] destinations;
 	private DataBase pathFinding;
-	private string room;
+	public string room;
 	/**/
 
 	/* Acide */
@@ -37,12 +37,12 @@ public class AcidMan : IA {
         base.salleNumber();
 		room = "Salle " + base.salle;
         pathFinding = GameObject.Find (room).GetComponent<DataBase>();
-		path = GetComponent<NavMeshAgent> ();
 		player = GameObject.Find ("Player").GetComponent<Personnage> ();
 		feet = this.transform.FindChild ("AcidMan/Pied").GetComponent<Animator>();
 		body = this.transform.FindChild ("AcidMan/HautDuCorps Monstres").GetComponent<Animator>();
 		spawning = true;
 		die = this.transform.FindChild ("AcidMan").GetComponent<Animator>();
+        patrol = GetComponent<AILerpPatrolAcidman>();
 		StartCoroutine (SpawnAcid());
 	}
 
@@ -55,7 +55,7 @@ public class AcidMan : IA {
 
 		if (mort == true) 
 		{
-			path.enabled = false;
+            patrol.OnDisable();
 			spawning = false;
 		}
 			
@@ -76,7 +76,7 @@ public class AcidMan : IA {
 
 	void Movement()
 	{
-		randDes = Random.Range (0, pathFinding.salleAléa.Length);
+		/*randDes = Random.Range (0, pathFinding.salleAléa.Length);
 
 		if (this.gameObject.tag != "Dead") 
 		{
@@ -88,7 +88,7 @@ public class AcidMan : IA {
 				randDes = Random.Range (0, pathFinding.salleAléa.Length);
 				path.destination = pathFinding.salleAléa [randDes].position;
 			}
-		}
+		}*/
 	}
 
 	void Acid()

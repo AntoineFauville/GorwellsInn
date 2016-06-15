@@ -140,6 +140,9 @@
      <Compile Include="Assets\Script Objet\Personnage.cs" />
      <Compile Include="Assets\Script Objet\Skeleton.cs" />
      <Compile Include="Assets\Script Objet\Zombie.cs" />
+     <Compile Include="Assets\Script Test\AILerpPatrol.cs" />
+     <Compile Include="Assets\Script Test\AILerpPatrolAcidman.cs" />
+     <Compile Include="Assets\Script Test\AILerpPatrolFantom.cs" />
      <Compile Include="Assets\Script Test\AILerpPursuit.cs" />
      <Compile Include="Assets\Script Test\Spawner.cs" />
      <Compile Include="Assets\Script\ABCDDeplacement.cs" />
@@ -192,7 +195,6 @@
      <Compile Include="Assets\Script\TipsTime.cs" />
      <Compile Include="Assets\Script\UpDownPlane.cs" />
      <Compile Include="Assets\Script\typeIA.cs" />
-     <Compile Include="Assets\TestPathFinding.cs" />
      <None Include="Assets\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh.shader" />
      <None Include="Assets\AstarPathfindingProject\Plugins\DotNetZip\DotNetZipLicense.txt" />
      <None Include="Assets\AstarPathfindingProject\ExampleScenes\Materials\Projector Multiply.shader" />
