@@ -4,12 +4,12 @@ using System.Collections;
 public class Skeleton : IA {
 
 	/* Mouvement */
-	private NavMeshAgent path;
 	private Personnage player;
-	/**/
+    private AILerpPursuit follow;
+    /**/
 
-	/* Charge */
-	Rigidbody corps;
+    /* Charge */
+    Rigidbody corps;
 	private int randTime;
 	private bool charge = true;
 	/**/
@@ -27,25 +27,25 @@ public class Skeleton : IA {
 	{
 		base.Start ();
         base.salleNumber();
-        path = GetComponent<NavMeshAgent> ();
 		player = GameObject.Find ("Player").GetComponent<Personnage> ();
 		corps = GetComponent<Rigidbody> ();
 		feet = this.transform.FindChild ("Skeleton/Pied").GetComponent<Animator>();
 		body = this.transform.FindChild ("Skeleton/HautDuCorps Monstres").GetComponent<Animator>();
 		die = this.transform.Find ("Skeleton").GetComponent<Animator>();
-		StartCoroutine (WaitAndCharge ());
+        follow = GetComponent<AILerpPursuit>();
+        StartCoroutine (WaitAndCharge ());
 	}
 
 	public override void Update () 
 	{
 		base.Update ();
-		Mouvement ();
+		//Mouvement ();
 		Charge ();
 		die.SetBool("Mort", mort);
 
 		if (mort == true) 
 		{
-			path.enabled = false;
+            follow.OnDisable();
 		}
 
 		if (this.gameObject.tag != "Dead") 
@@ -65,6 +65,7 @@ public class Skeleton : IA {
 
 	void Mouvement()
 	{
+        /*
 		if (this.gameObject.tag != "Dead") 
 		{
 			// On récupére la position du joueur afin que l'IA se dirige vers celui-ci.
@@ -75,6 +76,7 @@ public class Skeleton : IA {
 				path.destination = player.transform.position;
 			}
 		}
+        */
 	}
 
 	void Charge()
@@ -82,7 +84,7 @@ public class Skeleton : IA {
 		if (charge == false && corps.tag != "Dead")
 		{
 			StartCoroutine(WaitAndCharge());
-			corps.velocity = (player.transform.position - transform.position).normalized * 20;
+            corps.velocity = (player.transform.position - transform.position).normalized * 20;
 			// Cette ligne permet de cibler vers le joueur.
 			charge = true;	
 		}	

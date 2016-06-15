@@ -7,11 +7,6 @@ public class Zombie : IA {
 	/* Mouvement */
 	private Personnage player;
     private AILerpPursuit follow;
-    private Seeker seeker;
-    private Path way;
-    private float speed = 6;
-    private float nextWaypointDistance = 3;
-    private int currentWaypoint = 0;
 	/**/
 
 	/* Mort */
@@ -74,54 +69,6 @@ public class Zombie : IA {
 				path.destination = player.transform.position;
 			}
             */
-
-            /*if (AstarPath.active == null) return;
-
-            var p = ABPath.Construct(transform.position, player.transform.position, OnPathComplete);
-
-            AstarPath.StartPath(p);*/
-
-            // Mouvement A*
-            if (way == null)
-            {
-                return;
-            }
-
-            if (currentWaypoint >= way.vectorPath.Count)
-            {
-                Debug.Log("End of Path Reached");
-                currentWaypoint = 0;
-                return;
-            }
-
-            Vector3 dir = (way.vectorPath[currentWaypoint] - transform.position).normalized;
-            dir *= speed * Time.deltaTime;
-            transform.Translate(dir);
-            print("Moving to next point");
-
-            if (Vector3.Distance(transform.position, way.vectorPath[currentWaypoint]) < nextWaypointDistance)
-            {
-                print("Next Waypoint");
-                currentWaypoint++;
-                return;
-            }
-
-            if (Vector3.Distance(transform.position, player.transform.position) > 2)
-            {
-                seeker.StartPath(this.transform.position, player.transform.position, OnPathComplete);
-            }
-
         }
 	}
-
-    public void OnPathComplete(Path p)
-    {
-        Debug.Log("Yay, we got a path back. Did it have an error? " + p.error);
-        if (!p.error)
-        {
-            way = p;
-            //Reset the waypoint counter
-            currentWaypoint = 0;
-        }
-    }
 }
