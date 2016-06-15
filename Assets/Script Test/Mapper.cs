@@ -6,6 +6,7 @@ public class Mapper : MonoBehaviour {
 
     List<Object> Maps = new List<Object>();
     int rand;
+    GameObject map;
 
     void Awake()
     {
@@ -29,6 +30,7 @@ public class Mapper : MonoBehaviour {
     void Start()
     {
         rand = Random.Range(0, Maps.Count);
-        Instantiate(Maps[rand], transform.position, transform.rotation);
+        map = Instantiate(Maps[rand], transform.position, transform.rotation) as GameObject;
+        map.transform.SetParent(this.transform);
     }
 }

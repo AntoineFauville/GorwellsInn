@@ -22,6 +22,7 @@ public class ActivationIA : MonoBehaviour {
     {
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
         data = GameObject.Find("Main Camera").GetComponent<DataBase>();
+        player = GameObject.Find("Player");
         for (compteur = 0; compteur < IACount.nbreRand; compteur++)
         {
             IA[compteur].SetActive(false);
