@@ -144,7 +144,6 @@
      <Compile Include="Assets\Script Test\AILerpPatrolAcidman.cs" />
      <Compile Include="Assets\Script Test\AILerpPatrolFantom.cs" />
      <Compile Include="Assets\Script Test\AILerpPursuit.cs" />
-     <Compile Include="Assets\Script Test\BossMapper.cs" />
      <Compile Include="Assets\Script Test\Mapper.cs" />
      <Compile Include="Assets\Script Test\Spawner.cs" />
      <Compile Include="Assets\Script\ABCDDeplacement.cs" />

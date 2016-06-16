@@ -55,7 +55,6 @@ public class ChangeMapUnique : MonoBehaviour {
     {
         if (coll.gameObject.tag == "Player")
         {
-
             if (data.count == 12) // Victoire aprés 3 boss ^^
             {
                 gameOver.gameObject.SetActive(true);

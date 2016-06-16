@@ -18,8 +18,12 @@ public class IA : MonoBehaviour {
 	/* Door */
 	private string area;
 	public int salle;
-	private ChangeMap count;
+	public ChangeMap count;
     private DataBase data;
+
+    private Transform map;
+    private Mapper nbreRoom;
+
 	/**/
 
 
@@ -38,10 +42,12 @@ public class IA : MonoBehaviour {
 	{
 		joueur = GameObject.Find("Player").GetComponent<Personnage>();
 		guerrier = joueur.transform.Find ("SpriteDuJoueur/Guerrier").GetComponent<Guerrier>();
+        nbreRoom = GameObject.Find("Main Camera").GetComponent<Mapper>();
         salleNumber();
         if (salle != 0)
         {
-            count = GameObject.Find(area).GetComponent<ChangeMap>();
+            map = nbreRoom.mapPoints[salle-1];
+            count = GameObject.Find("Salle/"+area).GetComponent<ChangeMap>();
         }
         itemSpawn = Resources.Load("SpeedPotion") as GameObject;
     }
@@ -64,8 +70,8 @@ public class IA : MonoBehaviour {
 
     public virtual void salleNumber()
     {
-        salle = data.actualRoom;
-        area = "AreaChanging" + salle;
+        salle = data.count /*data.actualRoom*/;
+        area = "AreaChanging" /*+ salle*/;
     }
 
 	void OnCollisionEnter(Collision coll)
