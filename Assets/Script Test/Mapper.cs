@@ -54,6 +54,7 @@ public class Mapper : MonoBehaviour {
             else
             {
                 rand = Random.Range(0, Maps.Count);
+                rand = 0;
                 map = Instantiate(Maps[rand], mapPoints[i].position, mapPoints[i].rotation) as GameObject;
                 map.transform.SetParent(mapPoints[i]);
                 map.name = "Salle";

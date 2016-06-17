@@ -23,6 +23,9 @@ public class ChangeMapUnique : MonoBehaviour {
 
     public bool NextRoom;
 
+    private Mapper playerSpawn;
+    private Transform spawnPlace;
+
     void Start()
     {
 		player = GameObject.Find ("Player");
@@ -34,6 +37,7 @@ public class ChangeMapUnique : MonoBehaviour {
         gameOver = canvas.transform.FindChild("GameOverPanel");
         endOfGame = gameOver.transform.FindChild("TextGameOver").GetComponent<Text>();
 		victoryCount = PlayerPrefs.GetInt("Victory");
+        playerSpawn = GameObject.Find("Main Camera").GetComponent<Mapper>();
     }
 
     void Update()
@@ -67,7 +71,7 @@ public class ChangeMapUnique : MonoBehaviour {
 
             else if (data.count != 3 && data.count != 7 && data.count != 11 && data.count != 15)
             {
-                rand = Random.Range(0, data.taille);
+                /*rand = Random.Range(0, data.taille);
 
                 while (rand == (salle - 1) || data.previousMaps[rand] == true)
                 {
@@ -83,10 +87,13 @@ public class ChangeMapUnique : MonoBehaviour {
                 else if (salleBoss != 99)
                 {
                     data.previousBossMaps[(salleBoss - 1)] = true;
-                }
+                }*/
 
-                cam.transform.position = data.maps[rand].transform.position;
-                player.transform.position = data.playerSpawns[rand].transform.position;
+                spawnPlace = playerSpawn.mapPoints[data.count];
+
+                /* Code pour changer caméra de place et téléporter le joueur dans la salle suivante */
+                //cam.transform.position = data.maps[rand].transform.position;
+                player.transform.position = spawnPlace.Find("Salle/SpawnPlayer").transform.position /*data.playerSpawns[rand].transform.position*/;
                 data.count++;
             }
             else if (data.count == 3 || data.count == 7 || data.count == 11 || data.count == 15)

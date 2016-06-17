@@ -23,12 +23,16 @@ public class ChangeMap : MonoBehaviour {
     public LaunchTimer mode;
     private bool easy = false;
 
-	void Start ()
+    private Mapper playerSpawn;
+    private Transform spawnPlace;
+
+    void Start ()
 	{
 		player = GameObject.Find ("Player");
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
         data = GameObject.Find("Main Camera").GetComponent<DataBase>();
         mode = GameObject.Find("TriggerEasyLaunchGame").GetComponent<LaunchTimer>();
+        playerSpawn = GameObject.Find("Main Camera").GetComponent<Mapper>();
         nbreIA = nbreEnemy.nbreRand;
         NextRoom = false;
 	}
@@ -64,7 +68,7 @@ public class ChangeMap : MonoBehaviour {
 
             if (data.count != 3 && data.count != 7 && data.count != 11 && data.count != 15)
             {
-                rand = Random.Range(0, data.taille);
+                /*rand = Random.Range(0, data.taille);
 
                 while (rand == (salle - 1) || data.previousMaps[rand] == true)
                 {
@@ -80,10 +84,12 @@ public class ChangeMap : MonoBehaviour {
                 else if (salleBoss != 99)
                 {
                     data.previousBossMaps[(salleBoss - 1)] = true;
-                }
+                }*/
 
-                cam.transform.position = data.maps[rand].transform.position;
-                player.transform.position = data.playerSpawns[rand].transform.position;
+                spawnPlace = playerSpawn.mapPoints[data.count];
+
+                //cam.transform.position = data.maps[rand].transform.position;
+                player.transform.position = player.transform.position = spawnPlace.Find("Salle/SpawnPlayer").transform.position /*data.playerSpawns[rand].transform.position*/;
                 data.count++;
             }
             else if ( data.count == 3 || data.count == 7 || data.count == 11 || data.count == 15)

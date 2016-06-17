@@ -47,7 +47,7 @@ public class IA : MonoBehaviour {
         if (salle != 0)
         {
             map = nbreRoom.mapPoints[salle-1];
-            count = GameObject.Find("Salle/"+area).GetComponent<ChangeMap>();
+            count = map.Find("Salle/"+area).GetComponent<ChangeMap>();
         }
         itemSpawn = Resources.Load("SpeedPotion") as GameObject;
     }
