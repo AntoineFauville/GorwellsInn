@@ -7,8 +7,9 @@ public class Fantom : IA {
     private AILerpPatrolFantom patrol;
 	private float dist;
 	private int randDes;
-	//public Transform[] destinations;
-	private DataBase pathFinding;
+    private Transform parentA;
+    private Transform parentB;
+    public DataBase pathFinding;
 	public string room;
 	/**/
 
@@ -29,8 +30,12 @@ public class Fantom : IA {
 		base.Start ();
         base.salleNumber();
         room = "Salle " + base.salle;
-        pathFinding = GameObject.Find (room).GetComponent<DataBase>();
-		randDes = Random.Range (0, pathFinding.salleAléa.Length);
+        parentA = this.transform.parent; // IA
+        parentB = parentA.parent; //EnnemiTransform
+        parentA = parentB.parent; // EnnemiManager
+        parentB = parentA.parent; // Salle
+        pathFinding = parentB.GetComponent<DataBase>();
+        randDes = Random.Range (0, pathFinding.salleAléa.Length);
 		die = this.transform.Find ("Fantom").GetComponent<Animator>();
         patrol = GetComponent<AILerpPatrolFantom>();
 		StartCoroutine (SpawnCloud ());

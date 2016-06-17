@@ -5,7 +5,9 @@ public class OneEye : IA {
 
     /* Mouvement */
     private AILerpPatrol patrol;
-	private DataBase pathFinding;
+    private Transform parentA;
+    private Transform parentB;
+    public DataBase pathFinding;
 	private int i = 0;
 	public string room;
 	/**/
@@ -25,8 +27,12 @@ public class OneEye : IA {
 		base.Start ();
         base.salleNumber();
         room = "Salle " + base.salle;
-        pathFinding = GameObject.Find (room).GetComponent<DataBase>();
-		player = GameObject.Find ("Player").GetComponent<Personnage> ();
+        parentA = this.transform.parent; // IA
+        parentB = parentA.parent; //EnnemiTransform
+        parentA = parentB.parent; // EnnemiManager
+        parentB = parentA.parent; // Salle
+        pathFinding = parentB.GetComponent<DataBase>();
+        player = GameObject.Find ("Player").GetComponent<Personnage> ();
 		feet = this.transform.FindChild ("OneEye/Pied").GetComponent<Animator>();
 		body = this.transform.FindChild ("OneEye/HautDuCorps Monstres").GetComponent<Animator>();
 		die = this.transform.Find ("OneEye").GetComponent<Animator>();

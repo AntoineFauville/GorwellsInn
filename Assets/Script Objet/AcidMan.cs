@@ -8,8 +8,10 @@ public class AcidMan : IA {
 	private float dist;
 	private int randDes;
     public bool firstTime;
-	//public Transform[] destinations;
-	private DataBase pathFinding;
+	
+	public DataBase pathFinding;
+    private Transform parentA;
+    private Transform parentB;
 	public string room;
 	/**/
 
@@ -36,7 +38,11 @@ public class AcidMan : IA {
 		base.Start ();
         base.salleNumber();
 		room = "Salle " + base.salle;
-        pathFinding = GameObject.Find (room).GetComponent<DataBase>();
+        parentA = this.transform.parent; // IA
+        parentB = parentA.parent; //EnnemiTransform
+        parentA = parentB.parent; // EnnemiManager
+        parentB = parentA.parent; // Salle
+        pathFinding = parentB.GetComponent<DataBase>();
 		player = GameObject.Find ("Player").GetComponent<Personnage> ();
 		feet = this.transform.FindChild ("AcidMan/Pied").GetComponent<Animator>();
 		body = this.transform.FindChild ("AcidMan/HautDuCorps Monstres").GetComponent<Animator>();

@@ -17,8 +17,9 @@ public class AILerpPatrol : MonoBehaviour {
 	 * It can be a point on the ground where the player has clicked in an RTS for example, or it can be the player object in a zombie game.
 	 */
     public Vector3 target;
+    private OneEye IA;
     public DataBase pathFinding;
-    private int i = 0;
+    private int nbre = 0;
 
     /** Enables or disables searching for paths.
 	 * Setting this to false does not stop any active path requests from being calculated or stop it from continuing to follow the current path.
@@ -122,8 +123,9 @@ public class AILerpPatrol : MonoBehaviour {
     {
         startHasRun = true;
 
-        pathFinding = GameObject.Find(GetComponent<OneEye>().room).GetComponent<DataBase>();
-        target = pathFinding.salle[i].transform.position;
+        IA = GetComponent<OneEye>();
+        pathFinding = IA.pathFinding;
+        target = pathFinding.salle[nbre].transform.position;
 
         OnEnable();
     }
@@ -210,7 +212,7 @@ public class AILerpPatrol : MonoBehaviour {
 
         lastRepath = Time.time;
         // This is where we should search to
-        var targetPosition = pathFinding.salle[i].transform.position; // target.position
+        var targetPosition = pathFinding.salle[nbre].transform.position; // target.position
         var currentPosition = GetFeetPosition();
 
         // If we are following a path, start searching from the node we will reach next
@@ -238,12 +240,11 @@ public class AILerpPatrol : MonoBehaviour {
 	 */
     public virtual void OnTargetReached()
     {
-        if (i == pathFinding.salle.Length)
+        nbre++;
+        if (nbre == pathFinding.salle.Length)
         {
-            i = 0;
+            nbre = 0;
         }
-
-        i++;
         SearchPath();
     }
 

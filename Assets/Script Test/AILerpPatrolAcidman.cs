@@ -17,6 +17,7 @@ public class AILerpPatrolAcidman : MonoBehaviour {
 	 * It can be a point on the ground where the player has clicked in an RTS for example, or it can be the player object in a zombie game.
 	 */
     public Vector3 target;
+    public AcidMan IA;
     public DataBase pathFinding;
     private int i = 0;
 
@@ -122,7 +123,8 @@ public class AILerpPatrolAcidman : MonoBehaviour {
     {
         startHasRun = true;
 
-        pathFinding = GameObject.Find(GetComponent<AcidMan>().room).GetComponent<DataBase>();
+        IA = GetComponent<AcidMan>();
+        pathFinding = IA.pathFinding ;
         i = Random.Range(0, pathFinding.salleAléa.Length);
         target = pathFinding.salleAléa[i].transform.position;
 

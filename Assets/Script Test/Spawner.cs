@@ -6,7 +6,7 @@ public class Spawner : MonoBehaviour {
 
     List<Object> Enemy = new List<Object>();
     int rand;
-    Object ennemy;
+    GameObject ennemy;
 
     // Call before launch of the script
     void Awake()
@@ -23,6 +23,7 @@ public class Spawner : MonoBehaviour {
 	void Start ()
     {
         rand = Random.Range(0, 6);
-        Instantiate(Enemy[rand], transform.position, transform.rotation); 
+        ennemy = Instantiate(Enemy[rand], this.transform.position, this.transform.rotation) as GameObject;
+        ennemy.transform.SetParent(this.transform); 
 	}
 }

@@ -8,6 +8,7 @@ public class Mapper : MonoBehaviour {
     List<Object> BossMaps = new List<Object>();
     int rand;
     GameObject map;
+    DataBase nbreSalle;
     AstarPath scanner;
 
     public Transform[] mapPoints;
@@ -38,11 +39,6 @@ public class Mapper : MonoBehaviour {
 
     void Start()
     {
-        /*rand = Random.Range(0, Maps.Count);
-        map = Instantiate(Maps[rand], transform.position, transform.rotation) as GameObject;
-        map.transform.SetParent(this.transform);
-        scanner.Scan();*/
-
         for (int i = 0; i < mapPoints.Length; i++)
         {
             if (i == 3 || i == 7 || i == 11)
@@ -51,14 +47,17 @@ public class Mapper : MonoBehaviour {
                 map = Instantiate(BossMaps[rand], mapPoints[i].position, mapPoints[i].rotation) as GameObject;
                 map.transform.SetParent(mapPoints[i]);
                 map.name = "Salle";
+                nbreSalle = map.GetComponent<DataBase>();
+                nbreSalle.ChangeNumberRoom(i);
             }
             else
             {
                 rand = Random.Range(0, Maps.Count);
-                rand = 0;
                 map = Instantiate(Maps[rand], mapPoints[i].position, mapPoints[i].rotation) as GameObject;
                 map.transform.SetParent(mapPoints[i]);
                 map.name = "Salle";
+                nbreSalle = map.GetComponent<DataBase>();
+                nbreSalle.ChangeNumberRoom(i);
             }
         }
         scanner.Scan();

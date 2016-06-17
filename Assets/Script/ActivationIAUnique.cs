@@ -19,6 +19,7 @@ public class ActivationIAUnique : MonoBehaviour {
 
     public Mapper camPlace;
     public GameObject beacon;
+    public DataBase roomOrder;
 
     void Start()
     {
@@ -27,6 +28,7 @@ public class ActivationIAUnique : MonoBehaviour {
         player = GameObject.Find("Player");
         beacon = GameObject.Find("Beacon");
         camPlace = GameObject.Find("Main Camera").GetComponent<Mapper>();
+        roomOrder = this.transform.parent.GetComponent<DataBase>();
         nbreIA = 1;
         IA.SetActive(false);
     }
@@ -35,7 +37,7 @@ public class ActivationIAUnique : MonoBehaviour {
     {
         if ( data.count != 0 /*salleBoss == 99*/)
         {
-            if (cam.transform.position == camPlace.camPoints[data.count - 1].transform.position && beacon.transform.position == camPlace.camPoints[data.count - 1].transform.position)
+            if (cam.transform.position == camPlace.camPoints[data.count - 1].transform.position && beacon.transform.position == camPlace.camPoints[roomOrder.actualRoom].transform.position)
             {
                 StartCoroutine(WaitAndGo());
                 IA.SetActive(true);

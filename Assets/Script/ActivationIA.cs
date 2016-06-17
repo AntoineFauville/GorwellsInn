@@ -20,6 +20,7 @@ public class ActivationIA : MonoBehaviour {
 
     public Mapper camPlace;
     public GameObject beacon;
+    public DataBase roomOrder;
 
     void Start()
     {
@@ -29,6 +30,7 @@ public class ActivationIA : MonoBehaviour {
         mode = GameObject.Find("TriggerEasyLaunchGame").GetComponent<LaunchTimer>();
         beacon = GameObject.Find("Beacon");
         camPlace = GameObject.Find("Main Camera").GetComponent<Mapper>();
+        roomOrder = this.transform.parent.GetComponent<DataBase>();
         for (compteur = 0; compteur < IACount.nbreRand; compteur++)
         {
             IA[compteur].SetActive(false);
@@ -39,7 +41,7 @@ public class ActivationIA : MonoBehaviour {
     {
         if (data.count != 0)
         {
-            if (cam.transform.position == camPlace.camPoints[data.count - 1].transform.position && beacon.transform.position == camPlace.camPoints[data.count - 1].transform.position)
+            if (cam.transform.position == camPlace.camPoints[data.count - 1].transform.position && beacon.transform.position == camPlace.camPoints[roomOrder.actualRoom].transform.position)
             {
                 StartCoroutine(WaitAndGo());
 
