@@ -17,33 +17,38 @@ public class ActivationIAUnique : MonoBehaviour {
     private int compteur;
     private int nbreIA;
 
+    public Mapper camPlace;
+    public GameObject beacon;
+
     void Start()
     {
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
         data = GameObject.Find("Main Camera").GetComponent<DataBase>();
         player = GameObject.Find("Player");
+        beacon = GameObject.Find("Beacon");
+        camPlace = GameObject.Find("Main Camera").GetComponent<Mapper>();
         nbreIA = 1;
         IA.SetActive(false);
     }
 
     void Update()
     {
-        if ( salleBoss == 99)
+        if ( data.count != 0 /*salleBoss == 99*/)
         {
-            if (cam.transform.position == data.maps[salle - 1].transform.position) /*(player.transform.position == spawn.transform.position)*/
+            if (cam.transform.position == camPlace.camPoints[data.count - 1].transform.position && beacon.transform.position == camPlace.camPoints[data.count - 1].transform.position)
             {
                 StartCoroutine(WaitAndGo());
                 IA.SetActive(true);
             }
         }
-        else
+        /*else
         {
-            if (cam.transform.position == data.bossMaps[salleBoss - 1].transform.position) /*(player.transform.position == spawn.transform.position)*/
+            if (cam.transform.position == data.bossMaps[salleBoss - 1].transform.position) (player.transform.position == spawn.transform.position)
             {
                 StartCoroutine(WaitAndGo());
                 IA.SetActive(true);
             }
-        }
+        }*/
     }
 
     IEnumerator WaitAndGo()

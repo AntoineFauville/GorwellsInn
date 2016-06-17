@@ -18,11 +18,17 @@ public class ActivationIA : MonoBehaviour {
 
     private int compteur;
 
+    public Mapper camPlace;
+    public GameObject beacon;
+
     void Start()
     {
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
         data = GameObject.Find("Main Camera").GetComponent<DataBase>();
         player = GameObject.Find("Player");
+        mode = GameObject.Find("TriggerEasyLaunchGame").GetComponent<LaunchTimer>();
+        beacon = GameObject.Find("Beacon");
+        camPlace = GameObject.Find("Main Camera").GetComponent<Mapper>();
         for (compteur = 0; compteur < IACount.nbreRand; compteur++)
         {
             IA[compteur].SetActive(false);
@@ -31,23 +37,25 @@ public class ActivationIA : MonoBehaviour {
 
 	void Update ()
     {
-
-        if (cam.transform.position == data.maps[salle-1].transform.position) /*(player.transform.position == spawn.transform.position)* ancienne méthode de détection */
+        if (data.count != 0)
         {
-            StartCoroutine(WaitAndGo());
+            if (cam.transform.position == camPlace.camPoints[data.count - 1].transform.position && beacon.transform.position == camPlace.camPoints[data.count - 1].transform.position)
+            {
+                StartCoroutine(WaitAndGo());
 
-            if (mode.easyMode == true)
-            {
-                for (compteur = 0; compteur < IACount.nbreEasy; compteur++)
+                if (mode.easyMode == true)
                 {
-                    IA[compteur].SetActive(true);
+                    for (compteur = 0; compteur < IACount.nbreEasy; compteur++)
+                    {
+                        IA[compteur].SetActive(true);
+                    }
                 }
-            }
-            else
-            {
-                for (compteur = 0; compteur < IACount.nbreRand; compteur++)
+                else
                 {
-                    IA[compteur].SetActive(true);
+                    for (compteur = 0; compteur < IACount.nbreRand; compteur++)
+                    {
+                        IA[compteur].SetActive(true);
+                    }
                 }
             }
         }

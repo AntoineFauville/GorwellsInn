@@ -25,6 +25,7 @@ public class ChangeMapUnique : MonoBehaviour {
 
     private Mapper playerSpawn;
     private Transform spawnPlace;
+    private GameObject beacon;
 
     void Start()
     {
@@ -37,6 +38,7 @@ public class ChangeMapUnique : MonoBehaviour {
         gameOver = canvas.transform.FindChild("GameOverPanel");
         endOfGame = gameOver.transform.FindChild("TextGameOver").GetComponent<Text>();
 		victoryCount = PlayerPrefs.GetInt("Victory");
+        beacon = GameObject.Find("Beacon");
         playerSpawn = GameObject.Find("Main Camera").GetComponent<Mapper>();
     }
 
@@ -92,13 +94,14 @@ public class ChangeMapUnique : MonoBehaviour {
                 spawnPlace = playerSpawn.mapPoints[data.count];
 
                 /* Code pour changer caméra de place et téléporter le joueur dans la salle suivante */
-                //cam.transform.position = data.maps[rand].transform.position;
+                cam.transform.position = playerSpawn.camPoints[data.count].transform.position /*data.maps[rand].transform.position*/;
+                beacon.transform.position = playerSpawn.camPoints[data.count].transform.position;
                 player.transform.position = spawnPlace.Find("Salle/SpawnPlayer").transform.position /*data.playerSpawns[rand].transform.position*/;
                 data.count++;
             }
             else if (data.count == 3 || data.count == 7 || data.count == 11 || data.count == 15)
             {
-                rand = Random.Range(0, data.bossTaille);
+                /*rand = Random.Range(0, data.bossTaille);
 
                 while (rand == (salleBoss - 1) || data.previousBossMaps[rand] == true)
                 {
@@ -112,10 +115,11 @@ public class ChangeMapUnique : MonoBehaviour {
                 else if (salle != 99)
                 {
                     data.previousMaps[(salle - 1)] = true;
-                }
+                }*/
 
-                cam.transform.position = data.bossMaps[rand].transform.position;
-                player.transform.position = data.playerSpawnsBoss[rand].transform.position;
+                cam.transform.position = playerSpawn.camPoints[data.count].transform.position;
+                beacon.transform.position = playerSpawn.camPoints[data.count].transform.position;
+                player.transform.position = spawnPlace.Find("Salle/SpawnPlayer").transform.position;
                 data.count++;
             }
         }

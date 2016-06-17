@@ -25,6 +25,7 @@ public class ChangeMap : MonoBehaviour {
 
     private Mapper playerSpawn;
     private Transform spawnPlace;
+    private GameObject beacon;
 
     void Start ()
 	{
@@ -32,6 +33,7 @@ public class ChangeMap : MonoBehaviour {
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
         data = GameObject.Find("Main Camera").GetComponent<DataBase>();
         mode = GameObject.Find("TriggerEasyLaunchGame").GetComponent<LaunchTimer>();
+        beacon = GameObject.Find("Beacon");
         playerSpawn = GameObject.Find("Main Camera").GetComponent<Mapper>();
         nbreIA = nbreEnemy.nbreRand;
         NextRoom = false;
@@ -88,13 +90,14 @@ public class ChangeMap : MonoBehaviour {
 
                 spawnPlace = playerSpawn.mapPoints[data.count];
 
-                //cam.transform.position = data.maps[rand].transform.position;
-                player.transform.position = player.transform.position = spawnPlace.Find("Salle/SpawnPlayer").transform.position /*data.playerSpawns[rand].transform.position*/;
+                cam.transform.position = playerSpawn.camPoints[data.count].transform.position /*data.maps[rand].transform.position*/;
+                beacon.transform.position = playerSpawn.camPoints[data.count].transform.position;
+                player.transform.position = spawnPlace.Find("Salle/SpawnPlayer").transform.position /*data.playerSpawns[rand].transform.position*/;
                 data.count++;
             }
             else if ( data.count == 3 || data.count == 7 || data.count == 11 || data.count == 15)
             {
-                rand = Random.Range(0, data.bossTaille);
+                /*rand = Random.Range(0, data.bossTaille);
 
                 while (rand == (salleBoss - 1) || data.previousBossMaps[rand] == true)
                 {
@@ -108,10 +111,11 @@ public class ChangeMap : MonoBehaviour {
                 else if (salle != 99)
                 {
                     data.previousMaps[(salle - 1)] = true;
-                }
+                }*/
 
-                cam.transform.position = data.bossMaps[rand].transform.position;
-                player.transform.position = data.playerSpawnsBoss[rand].transform.position;
+                cam.transform.position = playerSpawn.camPoints[data.count].transform.position;
+                beacon.transform.position = playerSpawn.camPoints[data.count].transform.position;
+                player.transform.position = spawnPlace.Find("Salle/SpawnPlayer").transform.position;
                 data.count++;
             }
         }

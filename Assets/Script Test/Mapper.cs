@@ -11,6 +11,7 @@ public class Mapper : MonoBehaviour {
     AstarPath scanner;
 
     public Transform[] mapPoints;
+    public Transform[] camPoints;
 
     void Awake()
     {
@@ -49,7 +50,7 @@ public class Mapper : MonoBehaviour {
                 rand = Random.Range(0, BossMaps.Count);
                 map = Instantiate(BossMaps[rand], mapPoints[i].position, mapPoints[i].rotation) as GameObject;
                 map.transform.SetParent(mapPoints[i]);
-                map.name = "SalleBoss";
+                map.name = "Salle";
             }
             else
             {
