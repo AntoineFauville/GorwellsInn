@@ -5,10 +5,14 @@ public class Boss : MonoBehaviour {
 
 	/* Porte */
 	public ChangeMapUnique door;
-	/**/
+    private DataBase data;
+    private Transform map;
+    public int salle;
+    private Mapper nbreRoom;
+    /**/
 
-	/* Vie */
-	protected float bossLife;
+    /* Vie */
+    protected float bossLife;
 	protected LaunchTimer life;
 	/**/
 
@@ -27,12 +31,24 @@ public class Boss : MonoBehaviour {
 		//bossLife = 0;
 	}
 
+    void Awake()
+    {
+        data = GameObject.Find("Main Camera").GetComponent<DataBase>();
+    }
+
 	public virtual void Start () 
 	{
-		life = GameObject.Find ("TriggerEasyLaunchGame").GetComponent<LaunchTimer> ();
+        nbreRoom = GameObject.Find("Main Camera").GetComponent<Mapper>();
+        life = GameObject.Find ("TriggerEasyLaunchGame").GetComponent<LaunchTimer> ();
+        salle = data.count;
 		bossLife = Mathf.Round (life.LifeBar.fillAmount * 20);
         player = GameObject.Find("Player").GetComponent<Personnage>();
-	}
+        if (salle != 0)
+        {
+            map = nbreRoom.mapPoints[salle - 1];
+            door = map.Find("Salle/AreaChanging").GetComponent<ChangeMapUnique>();
+        }
+    }
 
 	public virtual void Update () 
 	{

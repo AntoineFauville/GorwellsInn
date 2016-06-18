@@ -17,7 +17,6 @@ public class Spawner : MonoBehaviour {
         Enemy.Add(Resources.Load("OneEye"));
         Enemy.Add(Resources.Load("Skeleton"));
         Enemy.Add(Resources.Load("Zombie"));
-        print("Ennemy has been listed");
     }
 
 	// Use this for initialization
@@ -25,7 +24,6 @@ public class Spawner : MonoBehaviour {
     {
         rand = Random.Range(0, Enemy.Count);
         ennemy = Instantiate(Enemy[rand], this.transform.position, this.transform.rotation) as GameObject;
-        print("Ennemy has been instantiate : " + rand);
         ennemy.transform.SetParent(this.transform);
     }
 }
