@@ -29,6 +29,7 @@ public class Personnage : MonoBehaviour {
 	private Transform mageSprite;
 	private Transform mort;
 	private Transform gameOver;
+    private GameObject gameOverPlace;
 	private Camera cam;
 	/**/
 
@@ -224,6 +225,7 @@ public class Personnage : MonoBehaviour {
 		Transform coeur = panel.transform.Find ("Coeur");
 		life = coeur.transform.Find ("CoeurSprite").GetComponent<Image> ();
 		gameOver = canvas.transform.Find ("GameOverPanel");
+        gameOverPlace = GameObject.Find("Game Over");
 		string classe = PlayerPrefs.GetString ("Classe");
 
 		if (classe == "Warrior")
@@ -380,7 +382,7 @@ public class Personnage : MonoBehaviour {
 		warriorSprite.gameObject.SetActive(false);
 		yield return new WaitForSeconds(3f);
 		gameOver.gameObject.SetActive(true);
-		cam.transform.position = new Vector3(0, 50, 75.6f);
+		cam.transform.position = gameOverPlace.transform.position;
 		Time.timeScale = 1f;
 	}
 
