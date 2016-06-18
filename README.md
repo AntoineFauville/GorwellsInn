@@ -18,7 +18,6 @@ This is a little game made with Unity that i will continue to develop.
 
 ## **TODO:** ##
 
-- New Map System.
 - Cooperation Mode.
 - PVP Mode.
 - Score stored online.
@@ -29,6 +28,7 @@ This is a little game made with Unity that i will continue to develop.
 
 ## **CURRENTLY IN PROGRESS:** ##
 
+- New Map System.
 - New Score System.
 - Visual Change after Win.
 - Boost items. 
