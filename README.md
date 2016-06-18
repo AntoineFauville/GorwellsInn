@@ -35,6 +35,6 @@ This is a little game made with Unity that i will continue to develop.
 
 ### *Contributors:* ###
 
-- Palmeri "**Zarbisi**" Raphael as **Developer** 
+- Palmeri "**Zarbisi**" Raphael as **Game Developer** 
 - Fauville **Sheido**" Antoine as **Game Designer**
 - Vrionis "**Grayk**" Mathieu as **Music Maker**.
