@@ -142,6 +142,7 @@
      <Compile Include="Assets\Script Objet\Zombie.cs" />
      <Compile Include="Assets\Script Test\AILerpPatrol.cs" />
      <Compile Include="Assets\Script Test\AILerpPatrolAcidman.cs" />
+     <Compile Include="Assets\Script Test\AILerpPatrolEye.cs" />
      <Compile Include="Assets\Script Test\AILerpPatrolFantom.cs" />
      <Compile Include="Assets\Script Test\AILerpPursuit.cs" />
      <Compile Include="Assets\Script Test\Mapper.cs" />

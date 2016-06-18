@@ -12,18 +12,20 @@ public class Spawner : MonoBehaviour {
     void Awake()
     {
         Enemy.Add(Resources.Load("AcidMan"));
-        Enemy.Add(Resources.Load("DarkMage"));
+        //Enemy.Add(Resources.Load("DarkMage"));
         Enemy.Add(Resources.Load("Fantom"));
         Enemy.Add(Resources.Load("OneEye"));
         Enemy.Add(Resources.Load("Skeleton"));
         Enemy.Add(Resources.Load("Zombie"));
+        print("Ennemy has been listed");
     }
 
 	// Use this for initialization
 	void Start ()
     {
-        rand = Random.Range(0, 6);
+        rand = Random.Range(0, Enemy.Count);
         ennemy = Instantiate(Enemy[rand], this.transform.position, this.transform.rotation) as GameObject;
-        ennemy.transform.SetParent(this.transform); 
-	}
+        print("Ennemy has been instantiate : " + rand);
+        ennemy.transform.SetParent(this.transform);
+    }
 }

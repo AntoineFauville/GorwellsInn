@@ -3,9 +3,10 @@ using System.Collections;
 
 public class PlayerClass : MonoBehaviour {
 
-    public GameObject Warrior;
-    public GameObject Mage;
-    public GameObject Marksman;
+    public GameObject player;
+    public Transform Warrior;
+    public Transform Mage;
+    public Transform Marksman;
     private int randClass;
     private string previousClasse;
     public GameObject[] images;
@@ -15,6 +16,11 @@ public class PlayerClass : MonoBehaviour {
     {
         Time.timeScale = 0f;
         previousClasse = PlayerPrefs.GetString("previousClasse");
+
+        player = GameObject.Find("Player");
+        Warrior = player.transform.Find("SpriteDuJoueur/Guerrier");
+        Mage = player.transform.Find("SpriteDuJoueur/Mage");
+        Marksman = player.transform.Find("SpriteDuJoueur/Archer");
 
         if (previousClasse == "Warrior")
         {
@@ -42,17 +48,17 @@ public class PlayerClass : MonoBehaviour {
            if (previousClasse == "Warrior")
             {
 				PlayerPrefs.SetString ("Classe", "Warrior");
-                Warrior.SetActive(true);
+                Warrior.gameObject.SetActive(true);
             }
            else if (previousClasse == "Mage")
             {
 				PlayerPrefs.SetString ("Classe", "Mage");
-                Mage.SetActive(true);
+                Mage.gameObject.SetActive(true);
             }
            else if (previousClasse == "Marksman")
             {
 				PlayerPrefs.SetString ("Classe", "Marksman");
-                Marksman.SetActive(true);
+                Marksman.gameObject.SetActive(true);
             }
            else
             {
@@ -61,17 +67,17 @@ public class PlayerClass : MonoBehaviour {
                 switch (randClass)
                 {
 				case 0:
-					Warrior.SetActive (true);
+					Warrior.gameObject.SetActive (true);
 					PlayerPrefs.SetString ("Classe", "Warrior");
                     break;
 
                 case 1:
-                    Mage.SetActive(true);
+                    Mage.gameObject.SetActive(true);
 					PlayerPrefs.SetString ("Classe", "Mage");
                     break;
 
                 case 2:
-                    Marksman.SetActive(true);
+                    Marksman.gameObject.SetActive(true);
 					PlayerPrefs.SetString ("Classe", "Marksman");
                     break;
                 }
@@ -87,17 +93,17 @@ public class PlayerClass : MonoBehaviour {
             switch (randClass)
             {
                 case 0:
-                    Warrior.SetActive(true);
+                    Warrior.gameObject.SetActive(true);
 				PlayerPrefs.SetString ("Classe", "Warrior");
                     break;
 
                 case 1:
-                    Mage.SetActive(true);
+                    Mage.gameObject.SetActive(true);
 				PlayerPrefs.SetString ("Classe", "Mage");
                     break;
 
                 case 2:
-                    Marksman.SetActive(true);
+                    Marksman.gameObject.SetActive(true);
 				PlayerPrefs.SetString ("Classe", "Marksman");
                     break;
             }

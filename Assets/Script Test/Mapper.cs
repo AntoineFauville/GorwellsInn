@@ -20,7 +20,7 @@ public class Mapper : MonoBehaviour {
         Maps.Add(Resources.Load("Salle 1"));
         Maps.Add(Resources.Load("Salle 2"));
         Maps.Add(Resources.Load("Salle 3"));
-        Maps.Add(Resources.Load("Salle 4"));
+        //Maps.Add(Resources.Load("Salle 4"));
         Maps.Add(Resources.Load("Salle 5"));
         Maps.Add(Resources.Load("Salle 6"));
         Maps.Add(Resources.Load("Salle 7"));
@@ -30,7 +30,7 @@ public class Mapper : MonoBehaviour {
         Maps.Add(Resources.Load("Salle 11"));
         Maps.Add(Resources.Load("Salle 12"));
         Maps.Add(Resources.Load("Salle 13"));
-        Maps.Add(Resources.Load("Salle 14"));
+        //Maps.Add(Resources.Load("Salle 14"));
         Maps.Add(Resources.Load("Salle 15"));
         BossMaps.Add(Resources.Load("SalleBoss1"));
         BossMaps.Add(Resources.Load("SalleBoss2"));

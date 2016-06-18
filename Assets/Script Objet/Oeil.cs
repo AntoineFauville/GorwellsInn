@@ -13,6 +13,7 @@ public class Oeil : Boss {
 	/* Mort */
 	public Animator touched;
 	public GameObject mort;
+    private AILerpPatrolEye movement;
 	/**/
 
 	/* Attaque */
@@ -48,7 +49,8 @@ public class Oeil : Boss {
 	{
 		base.Start();
 
-		path = GetComponent<NavMeshAgent> ();
+        movement = GetComponent<AILerpPatrolEye>();
+        path = GetComponent<NavMeshAgent> ();
         playSound = GetComponent<AudioSource>();
         StartCoroutine (WaitAndShot ());
 		StartCoroutine(Lazzer());
@@ -62,6 +64,7 @@ public class Oeil : Boss {
 		{
 			//door.Counter ();
 			path.enabled = false;
+            movement.OnDisable();
 			touched.Stop();
 			LaserOn.Stop ();
 			mort.SetActive (true);
@@ -70,7 +73,7 @@ public class Oeil : Boss {
 		if (this.gameObject.tag != "Dead") 
 		{
 			touched.SetBool ("Touched", hit);
-			Mouvement ();
+			//Mouvement ();
 			Projectiles ();
 			Laser ();	
 		}

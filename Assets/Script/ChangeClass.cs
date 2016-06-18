@@ -3,11 +3,19 @@ using System.Collections;
 
 public class ChangeClass : MonoBehaviour {
 
-    public GameObject Choice;
+    public Transform choice;
+    public GameObject canvas;
     public MakeChoice go;
     private bool randLaunch = true;
     public bool used = false;
     public Animator use;
+
+    void Start()
+    {
+        canvas = GameObject.Find("Canvas");
+        choice = canvas.transform.FindChild("ClassChoicePanel (1)");
+        go = GameObject.Find("Main Camera").GetComponent<MakeChoice>();
+    }
 
     void Update()
     {
@@ -19,7 +27,7 @@ public class ChangeClass : MonoBehaviour {
         if (coll.gameObject.tag == "Player" && randLaunch == true)
         {
             randLaunch = false;
-            Choice.SetActive(true);
+            choice.gameObject.SetActive(true);
             go.ChoiceTime();
         }
     }

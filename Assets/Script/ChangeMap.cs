@@ -113,6 +113,8 @@ public class ChangeMap : MonoBehaviour {
                     data.previousMaps[(salle - 1)] = true;
                 }*/
 
+                spawnPlace = playerSpawn.mapPoints[data.count];
+
                 cam.transform.position = playerSpawn.camPoints[data.count].transform.position;
                 beacon.transform.position = playerSpawn.camPoints[data.count].transform.position;
                 player.transform.position = spawnPlace.Find("Salle/SpawnPlayer").transform.position;

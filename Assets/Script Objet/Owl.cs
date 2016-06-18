@@ -16,12 +16,14 @@ public class Owl : Boss {
     /* Mort */
     public Animator touched;
 	public GameObject mort;
-	/**/
+    private AILerpPursuit movement;
+    /**/
 
-	public override void Start () 
+    public override void Start () 
 	{
 		base.Start();
 
+        movement = GetComponent<AILerpPursuit>();
 		path = GetComponent<NavMeshAgent> ();
         joueur = GameObject.Find ("Player").GetComponent<Personnage> ();
         playSound = GetComponent<AudioSource>();
@@ -37,12 +39,13 @@ public class Owl : Boss {
 			path.enabled = false;
 			touched.Stop();
 			mort.SetActive (true);
+            movement.OnDisable();
 		}
 
 		if (this.gameObject.tag != "Dead") 
 		{
 			touched.SetBool ("Touched", hit);
-			Mouvement ();
+			//Mouvement ();
 		}
 	}
 

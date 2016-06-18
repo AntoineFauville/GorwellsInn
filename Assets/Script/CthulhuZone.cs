@@ -17,6 +17,7 @@ public class CthulhuZone : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        lifeSupp = GameObject.Find("TriggerEasyLaunchGame").GetComponent<LaunchTimer>();
         vieTotale = Mathf.Round(lifeSupp.LifeBar.fillAmount * 20);
         demiVie = vieTotale / 2;
         Zoning();
