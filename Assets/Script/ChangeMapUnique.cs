@@ -13,6 +13,7 @@ public class ChangeMapUnique : MonoBehaviour {
     public DataBase data;
     public GameObject canvas;
     public Transform gameOver;
+    public GameObject gameOverPlace;
     public Text endOfGame;
 	int victoryCount;
 
@@ -36,6 +37,7 @@ public class ChangeMapUnique : MonoBehaviour {
         data = GameObject.Find("Main Camera").GetComponent<DataBase>();
         canvas = GameObject.Find("Canvas");
         gameOver = canvas.transform.FindChild("GameOverPanel");
+        gameOverPlace = GameObject.Find("Game Over");
         endOfGame = gameOver.transform.FindChild("TextGameOver").GetComponent<Text>();
 		victoryCount = PlayerPrefs.GetInt("Victory");
         beacon = GameObject.Find("Beacon");
@@ -68,7 +70,7 @@ public class ChangeMapUnique : MonoBehaviour {
 				victoryCount = victoryCount + 1;
 				PlayerPrefs.SetInt ("Victory", victoryCount);
                 //Time.timeScale = 0f;
-                cam.transform.position = new Vector3(0, 50, 75.6f);
+                cam.transform.position = gameOverPlace.transform.position;
             }
 
             else if (data.count != 3 && data.count != 7 && data.count != 11 && data.count != 15)
