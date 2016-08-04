@@ -6,33 +6,56 @@ public class ClassChange : MonoBehaviour {
     /* Activation Crystal */
     private Transform choice;
     private GameObject canvas;
+    private Transform choiceDisplay;
+    private Transform panel1;
+    private Transform panel2;
     private bool randLaunch = true;
     private bool used = false;
     private Animator use;
     /**/
 
+    /* Porte */
+    private DataBase data;
+    private Transform map;
+    public int salle;
+    private Mapper nbreRoom;
+    public ChangeMapUnique count;
+    /**/
+
     /* Choice Time */
     private int nbreChoice1;
     private int nbreChoice2;
-    private Transform[] jobs = new Transform[3];
-    private GameObject[] pics1;
-    private GameObject[] pics2;
-    private GameObject display;
-    public ChangeMapUnique count; 
+    public Transform[] jobs = new Transform[3];
+    public Transform[] pics1 = new Transform[3];
+    public Transform[] pics2 = new Transform[3];
     /**/
 
-	void Start ()
+    void Awake()
     {
+        data = GameObject.Find("Main Camera").GetComponent<DataBase>();
+    }
+
+    void Start ()
+    {
+        nbreRoom = GameObject.Find("Main Camera").GetComponent<Mapper>();
+        salle = data.count;
         canvas = GameObject.Find("Canvas");
-        choice = canvas.transform.FindChild("ClassChoicePanel (1)"); 
+        choice = canvas.transform.FindChild("ClassChoicePanel");
+        choiceDisplay = choice.transform.FindChild("Choix");
         use = GetComponent<Animator>();
+
+        if(salle != 0)
+        {
+            map = nbreRoom.mapPoints[salle - 1];
+            count = map.Find("Salle/AreaChanging").GetComponent<ChangeMapUnique>();
+        }
     }
 	
 	void Update ()
     {
         use.SetBool("Parchemin", used);
 
-        if (display.gameObject.activeSelf == true)
+        if (choiceDisplay.gameObject.activeSelf == true)
         {
             if (used != true && this.gameObject.activeSelf == true)
             {
@@ -41,9 +64,18 @@ public class ClassChange : MonoBehaviour {
                     jobs[0].gameObject.SetActive(false);
                     jobs[1].gameObject.SetActive(false);
                     jobs[2].gameObject.SetActive(false);
+
+                    /*pics1[0].gameObject.SetActive(false);
+                    pics1[1].gameObject.SetActive(false);
+                    pics1[2].gameObject.SetActive(false);
+
+                    pics2[0].gameObject.SetActive(false);
+                    pics2[1].gameObject.SetActive(false);
+                    pics2[2].gameObject.SetActive(false);*/
+
                     PlayerPrefs.SetString("Classe", jobs[nbreChoice1].name);
                     jobs[nbreChoice1].gameObject.SetActive(true);
-                    display.SetActive(false);
+                    choiceDisplay.gameObject.SetActive(false);
                     count.Counter();
                     used = true;
                 }
@@ -52,9 +84,18 @@ public class ClassChange : MonoBehaviour {
                     jobs[0].gameObject.SetActive(false);
                     jobs[1].gameObject.SetActive(false);
                     jobs[2].gameObject.SetActive(false);
+
+                    /*pics1[0].gameObject.SetActive(false);
+                    pics1[1].gameObject.SetActive(false);
+                    pics1[2].gameObject.SetActive(false);
+
+                    pics2[0].gameObject.SetActive(false);
+                    pics2[1].gameObject.SetActive(false);
+                    pics2[2].gameObject.SetActive(false);*/
+
                     PlayerPrefs.SetString("Classe", jobs[nbreChoice2].name);
                     jobs[nbreChoice2].gameObject.SetActive(true);
-                    display.SetActive(false);
+                    choiceDisplay.gameObject.SetActive(false);
                     used = true;
                     count.Counter();
                 }
@@ -67,7 +108,7 @@ public class ClassChange : MonoBehaviour {
         if (coll.gameObject.tag == "Player" && randLaunch == true)
         {
             randLaunch = false;
-            choice.gameObject.SetActive(true);
+            choiceDisplay.gameObject.SetActive(true);
             ChoiceTime();
         }
     }
@@ -81,12 +122,12 @@ public class ClassChange : MonoBehaviour {
 
         for (int i=0; i<3; i++)
         {
-            pics1[i].SetActive(false);
-            pics2[i].SetActive(false);
+            pics1[i].gameObject.SetActive(false);
+            pics2[i].gameObject.SetActive(false);
         }
 
-        pics1[nbreChoice1].SetActive(true);
-        pics2[nbreChoice2].SetActive(true);
+        pics1[nbreChoice1].gameObject.SetActive(true);
+        pics2[nbreChoice2].gameObject.SetActive(true);
     }
 
     void JobsFinder()
@@ -97,6 +138,18 @@ public class ClassChange : MonoBehaviour {
         jobs[2] = sprites.transform.Find("Archer");
         jobs[1] = sprites.transform.Find("Mage");
 
-        /* Need a code for linking image to teh choice menu */
+        // Getting Parent Objects for linking:
+        panel1 = choiceDisplay.transform.FindChild("Panel");
+        panel2 = choiceDisplay.transform.FindChild("Panel (1)");
+
+        // Linking first choice pictures:
+        pics1[0] = panel1.transform.Find("Image (1)");
+        pics1[1] = panel1.transform.Find("Image");
+        pics1[2] = panel1.transform.Find("Image (2)");
+
+        // Linking second choice pictures:
+        pics2[0] = panel2.transform.Find("Image (1)");
+        pics2[1] = panel2.transform.Find("Image");
+        pics2[2] = panel2.transform.Find("Image (2)");
     }
 }
