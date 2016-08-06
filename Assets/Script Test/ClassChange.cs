@@ -127,6 +127,7 @@ public class ClassChange : MonoBehaviour {
         }
 
         pics1[nbreChoice1].gameObject.SetActive(true);
+        //pics2[nbreChoice2].transform.position = new Vector3(112, 0, -6);
         pics2[nbreChoice2].gameObject.SetActive(true);
     }
 
