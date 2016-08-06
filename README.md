@@ -31,7 +31,11 @@ This is a little game made with Unity that i will continue to develop.
 - New Map System.
 - New Score System.
 - Visual Change after Win.
-- Boost items. 
+- Boost items.
+
+## **KNOW ISSUES** ##
+
+- Enemy cannnot be hit(sometimes). 
 
 ### *Contributors:* ###
 
